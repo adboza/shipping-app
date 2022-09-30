@@ -1,12 +1,9 @@
 class LoadCategoriesController < ApplicationController
-  #before_action :set_load_category, only: [:show, :index]
+  
   def index
     @load_categories = LoadCategory.all
   end
-
-  def show  
-      
-  end
+ 
   
   def new
     @load_category = LoadCategory.new()
@@ -25,6 +22,6 @@ class LoadCategoriesController < ApplicationController
   end
 
   def load_category_params
-    params.require(:load_category).permit(:min_weight, :max_weight, :weight_dist_price)
+    params.require(:load_category).permit(:min_weight, :max_weight)
   end
 end

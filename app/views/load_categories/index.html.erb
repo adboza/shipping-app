@@ -1,5 +1,6 @@
 <section id="load_categories">
 <h3>Preços por peso</h3>
+  <% if @load_categories.any? %>
     <table>      
         <tr>
           <th>Intervalo</th>
@@ -8,13 +9,14 @@
         <% @load_categories.each do |load| %>      
           <tr>
             <td><%= load.formated_description%></td>
-            <td>R$ <%= load.formated_value%></td>
+            <td>R$ <%= %></td>
           </tr>
           
         <% end %>
     </table>
-    
-  
+  <% else %>
+    <p>Não existem preços por peso cadastrados.</p>
+  <% end %>
     
   
 </section>
