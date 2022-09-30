@@ -1,0 +1,20 @@
+<section id="load_categories">
+<h3>Preços por peso</h3>
+    <table>      
+        <tr>
+          <th>Intervalo</th>
+          <th>Valor por km</th>
+        </tr>
+        <% @load_categories.each do |load| %>      
+          <tr>
+            <td><%= load.formated_description%></td>
+            <td>R$ <%= load.formated_value%></td>
+          </tr>
+          
+        <% end %>
+    </table>
+    
+  
+    
+  
+</section>

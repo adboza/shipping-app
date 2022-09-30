@@ -1,28 +1,5 @@
-<section id="load_categories">
-    <div id="excluir">Esta div deve ser excluida após tirar dúvida
-    <% @load_categories.each do |load| %>      
-          <p><%= load.formated_description%></p>
-            <p>R$ <%= load.formated_value%></p>
-          
-          
-        <% end %>
-    </div>
-    <table>
-      <caption>Preços por peso</caption>
-        <tr>
-          <th>Intervalo</th>
-          <th>Valor por km</th>
-        </tr>
-        <% @load_categories.each do |load| %>      
-          <tr>
-            <td><%= load.formated_description%></td>
-            <td>R$ <%= load.formated_value%></td>
-          </tr>
-          
-        <% end %>
-    </table>
-    
-  
-    
-  </div>
+<section id="main_page_content">
+<ul>
+  <li><%= link_to 'Preços por peso', load_categories_path %></li>
+</ul>  
 </section>
