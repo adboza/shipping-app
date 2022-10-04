@@ -19,7 +19,6 @@ describe 'Usuario visita tela inicial' do
 
     #Act
     visit root_path 
-
     #Assert    
     expect(page).to have_link 'Preços por peso'
   end

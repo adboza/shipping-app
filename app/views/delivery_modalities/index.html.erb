@@ -1,0 +1,16 @@
+<h2>Modalidades de Entrega</h2>
+
+
+<% if @delivery_modalities.any? %>  
+    
+  <dl>
+    <% @delivery_modalities.each do |m|%>        
+      <dt>Entrega <%= m.mod_name%></dt>
+      <dd>Taxa inicial: R$ <%= m.mod_price%></dd>        
+    <%end%>
+  </dl>
+    
+  
+<% else %>
+  <p>Não existem BLabla cadastradas.</p>
+<% end %>

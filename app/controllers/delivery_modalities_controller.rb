@@ -1,7 +1,5 @@
 class DeliveryModalitiesController < ApplicationController
   def index
-    
-  end
-  def new
+    @delivery_modalities = DeliveryModality.all
   end
 end

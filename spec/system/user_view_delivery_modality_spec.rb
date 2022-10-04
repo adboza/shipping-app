@@ -11,4 +11,17 @@ describe 'Usuário vê modalidades de entrega' do
     expect(page).to have_link 'Modalidades de Entrega'
     expect(current_path).to eq delivery_modalities_path
   end
+  it 'e vê lista de modalidades' do
+    #Arrange
+    DeliveryModality.create!(mod_name: 'Ecológica', mod_price: 4)
+    #Act
+    visit root_path
+    click_on 'Modalidades de Entrega'
+    #Assert
+    within('main') do
+      expect(page).to have_content 'Modalidades de Entrega'
+    end
+    expect(page).to have_content 'Entrega Ecológica'
+    expect(page).to have_content 'Taxa inicial: R$ 4'
+  end
 end
