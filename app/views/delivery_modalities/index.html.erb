@@ -1,19 +1,20 @@
 <h2>Modalidades de Entrega</h2>
 
 
-<% if @delivery_modalities.any? %>  
-    
-  <dl>
-    <% @delivery_modalities.each do |m|%>        
-      <dt>Entrega <%= m.mod_name%></dt>
-      <dd>Taxa inicial: R$ <%= m.mod_price%></dd>        
-    <%end%>
-  </dl>
-    
+<div>
+  <% if @delivery_modalities.any? %>
   
-<% else %>
-  <p>Não existem modalidades cadastradas.</p>
-<% end %>
+    <dl>
+      <% @delivery_modalities.each do |m|%>
+        <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= m.mod_name%></dt>
+        <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= m.mod_price%></dd>
+      <%end%>
+    </dl> 
+  
+  <% else %>
+    <p>Não existem modalidades cadastradas.</p>
+  <% end %>
+</div>
 
 <div>
 <%= link_to 'Cadastrar Modalidade', new_delivery_modality_path %>

@@ -7,4 +7,4 @@ pt-BR:
     attributes:
       delivery_modality:
         mod_name: 'Nome modalidade'
-        mod_price: 'Taxa inicial de entrega'
+        mod_price: 'Taxa inicial'

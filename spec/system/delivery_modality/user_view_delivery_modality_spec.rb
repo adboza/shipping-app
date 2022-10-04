@@ -21,7 +21,7 @@ describe 'Usuário vê modalidades de entrega' do
     within('main') do
       expect(page).to have_content 'Modalidades de Entrega'
     end
-    expect(page).to have_content 'Entrega Ecológica'
+    expect(page).to have_content 'Nome modalidade: Ecológica'
     expect(page).to have_content 'Taxa inicial: R$ 4'
   end
   it 'e não vê modalidades cadastradas' do
@@ -34,7 +34,7 @@ describe 'Usuário vê modalidades de entrega' do
     within('main') do
       expect(page).to have_content 'Modalidades de Entrega'
     end
-    expect(page).not_to have_content 'Entrega Ecológica'
+    expect(page).not_to have_content 'Nome modalidade: Ecológica'
     expect(page).to have_content 'Não existem modalidades cadastradas'
   end
 end

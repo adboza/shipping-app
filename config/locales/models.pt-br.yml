@@ -2,3 +2,6 @@ pt-BR:
   pending: 'Pendente'
   canceled: 'Cancelado'
   delivered: 'Entregue'
+  send_function: 'Enviar'
+  edit_function: 'Editar'
+  back_function: 'Voltar'
