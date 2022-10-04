@@ -1,0 +1,13 @@
+<%= form_with(model: @delivery_modality) do |f| %>
+  <div>
+    <%= f.label DeliveryModality.human_attribute_name(:mod_name)%>
+    <%= f.text_field :mod_name %>
+  </div>  
+  <div>
+    <%= f.label DeliveryModality.human_attribute_name(:mod_price) %>
+    <%= f.text_field :mod_price %>
+  </div>  
+  <div>  
+    <%= f.submit 'Enviar'%>
+  </div>
+<%end%>

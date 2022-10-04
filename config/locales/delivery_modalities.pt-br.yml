@@ -1,0 +1,10 @@
+pt-BR:  
+  activerecord:
+    models:
+      delivery_modality: 
+        one: 'Modalidade de Entrega'
+        other: 'Modalidades de Entrega'           
+    attributes:
+      delivery_modality:
+        mod_name: 'Nome modalidade'
+        mod_price: 'Taxa inicial de entrega'
