@@ -11,10 +11,17 @@
 
   <body>
     <header>
-      <h1>Galactic e-Commerce</h1>
+      <title>Galactic e-Commerce</title>
       <%= link_to root_path do %>
         <h2>Gerenciamento de frota de entregas</h2>
       <% end %>
+      <nav>
+        <ul>
+          <li><%= link_to 'Modalidades de Entrega', delivery_modalities_path %></li>
+        </ul>
+      </nav>
+      
+      
     </header>
     <main>
       <div>
