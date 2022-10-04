@@ -1,0 +1,6 @@
+<h2><%= DeliveryModality.model_name.human %> <%= @delivery_modality.mod_name%></h2>
+
+<dl>
+  <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @delivery_modality.mod_name%></dt>
+          <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= @delivery_modality.mod_price%></dd>
+</dl>

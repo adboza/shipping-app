@@ -6,7 +6,7 @@
   
     <dl>
       <% @delivery_modalities.each do |m|%>
-        <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= m.mod_name%></dt>
+        <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= link_to m.mod_name, m%></dt>
         <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= m.mod_price%></dd>
       <%end%>
     </dl> 

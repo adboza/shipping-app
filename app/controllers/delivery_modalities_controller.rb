@@ -14,6 +14,9 @@ class DeliveryModalitiesController < ApplicationController
       render 'new'
     end
   end
+  def show
+    @delivery_modality = DeliveryModality.find(params[:id])
+  end
   private
   
   def delivery_modality_params
