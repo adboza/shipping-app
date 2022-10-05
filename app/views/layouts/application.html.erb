@@ -11,16 +11,30 @@
 
   <body>
     <header>
-      <title><h1>Galactic e-Commerce</h1></title>
-      <%= link_to root_path do %>
-        <h2>Gerenciamento de frota de entregas</h2>
-      <% end %>
+      <h1>Galactic e-Commerce</h1>      
       <nav>
-        <ul>
-          <li><%= link_to 'Modalidades de Entrega', delivery_modalities_path %></li>
+        <ul>         
+          
+          <% if user_signed_in? %>
+            <li><%= link_to 'Modalidades de Entrega', delivery_modalities_path %></li>
+            <%if current_user.user_access == 'regular_user' %>
+              <li><%= link_to 'Vaiter link inicializar Ordem de Entrega', delivery_modalities_path %></li>
+            <% end %>
+            <%if current_user.user_access == 'admin_user' %>
+              <li><%= link_to 'Vai ter link criar Ordem de Entrega', delivery_modalities_path %></li>
+            <% end %>
+            <li><%= current_user.name %></li>
+            <li><%= button_to 'Sair', destroy_user_session_path, method: :delete %></li>
+            
+          <% else %>
+            <li><%= link_to 'Entrar', new_user_session_path %></li>
+          <% end %>
+          
         </ul>
       </nav>
-      
+      <%= link_to root_path do %>
+        <h2>Gerenciamento de frota de entregas</h2>
+      <% end %>         
       
     </header>
     <main>

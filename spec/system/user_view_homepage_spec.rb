@@ -6,7 +6,7 @@ describe 'Usuario visita tela inicial' do
     # Arrange
 
     #Act
-    visit(root_path)
+    visit root_path
 
     #Assert
     expect(page).to have_content('Galactic e-Commerce')
@@ -21,6 +21,23 @@ describe 'Usuario visita tela inicial' do
     visit root_path 
     #Assert    
     expect(page).to have_link 'Preços por peso'
+  end
+
+  it 'e realiza login com sucesso' do
+    # Arrange 
+    User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+
+    #Act
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'E-mail', with: 'joao@email.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Log in'
+
+    #Assert
+    expect(page).to have_content 'Modalidades de Entrega'
+    expect(page).not_to have_link('Entrar', href: new_user_session_path)
+    expect(page).to have_button('Sair')
   end
 
 

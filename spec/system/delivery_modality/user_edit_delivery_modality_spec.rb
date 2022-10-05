@@ -1,8 +1,10 @@
 require 'rails_helper'
 
-describe 'Usuário edita um Fornecedor' do
-  it 'a partir da página de detalhes do fornecedor' do
-    #Arrange    
+describe 'Usuário edita uma Modalidade de Entrega' do
+  it 'a partir da página de detalhes da modalidade' do
+    #Arrange
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
  
     #Act
@@ -15,7 +17,9 @@ describe 'Usuário edita um Fornecedor' do
     
   end
   it 'com sucesso' do
-    #Arrange    
+    #Arrange
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
  
     #Act
