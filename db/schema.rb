@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_200114) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_194316) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -23,6 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_200114) do
     t.integer "max_weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_modality_id", null: false
+    t.decimal "weight_price"
+    t.index ["delivery_modality_id"], name: "index_load_categories_on_delivery_modality_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +42,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_200114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "load_categories", "delivery_modalities"
 end

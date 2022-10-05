@@ -14,15 +14,6 @@ describe 'Usuario visita tela inicial' do
     expect(page).to have_link('Gerenciamento de frota de entregas', href: root_path)
   end
 
-  it 'e vê link para preços por peso' do
-    # Arrange
-
-    #Act
-    visit root_path 
-    #Assert    
-    expect(page).to have_link 'Preços por peso'
-  end
-
   it 'e realiza login com sucesso' do
     # Arrange 
     User.create!(name:'Joao', email:'joao@email.com', password:'123456')

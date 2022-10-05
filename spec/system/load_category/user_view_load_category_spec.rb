@@ -3,8 +3,11 @@ require 'rails_helper'
 describe 'Usuario vê categorias de peso' do
  it 'a partir da página inicial' do
     #Arrange
-    LoadCategory.create!(min_weight: 0, max_weight: 10)
-    LoadCategory.create!(min_weight: 11, max_weight: 30)
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    login_as(user)
+    modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
+    LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
+    LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
 
     #Act
     visit root_path
@@ -15,11 +18,14 @@ describe 'Usuario vê categorias de peso' do
   end
   it 'e visualiza lista' do
     #Arrange
-    LoadCategory.create!(min_weight: 0, max_weight: 10)
-    LoadCategory.create!(min_weight: 11, max_weight: 30)
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    login_as(user)
+    modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
+    LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
+    LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
 
     #Act
-    visit root_path
+    visit root_path    
     click_on 'Preços por peso'    
 
     #Assert    

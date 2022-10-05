@@ -5,11 +5,13 @@
         <tr>
           <th>Intervalo</th>
           <th>Valor por km</th>
+          <th>Modalidade</th>
         </tr>
         <% @load_categories.each do |load| %>      
           <tr>
             <td><%= load.formated_description%></td>
-            <td>R$ <%= %></td>
+            <td> <%= load.formated_value%></td>
+            <td> <%= load.delivery_modality.mod_name %></td>
           </tr>
           
         <% end %>
