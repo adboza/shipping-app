@@ -17,6 +17,14 @@ class DeliveryModalitiesController < ApplicationController
   def show
     @delivery_modality = DeliveryModality.find(params[:id])
   end
+  def edit
+    @delivery_modality = DeliveryModality.find(params[:id])
+  end
+  def update
+    @delivery_modality = DeliveryModality.find(params[:id])
+    @delivery_modality.update(delivery_modality_params)
+    redirect_to @delivery_modality, notice: 'Modalidade atualizada com sucesso'
+  end
   private
   
   def delivery_modality_params

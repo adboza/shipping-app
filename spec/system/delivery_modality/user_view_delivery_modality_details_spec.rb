@@ -13,4 +13,5 @@ describe 'Usuário vê detalhes do fornecedor' do
     expect(page).to have_content('Modalidade de Entrega Expressa')
         
   end
+  
 end
