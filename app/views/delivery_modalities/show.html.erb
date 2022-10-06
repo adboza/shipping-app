@@ -6,7 +6,10 @@
 </dl>
 
 <section id="load_categories">
-  <h3>Preços por peso</h3>
+  
+    <h3>Preços por peso</h3>
+  
+  
   <% if @load_categories.any? %>
     <table>      
         <tr>
@@ -31,7 +34,7 @@
 
 <div>
 <% if current_user.user_access == 'admin_user' %>
-<%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality)%>
+<%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality)%> <br>
 <%= link_to 'Cadastrar Preços por Peso', new_delivery_modality_load_category_path(@delivery_modality) %>
 <% end %>
 </div>

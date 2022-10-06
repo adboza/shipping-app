@@ -1,5 +1,6 @@
 class LoadCategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  
   #before_action :check_user, only: [:index]  
   
   def new
@@ -11,15 +12,15 @@ class LoadCategoriesController < ApplicationController
 
   def create
     @delivery_modality = DeliveryModality.find(params[:delivery_modality_id])
-    @load_category = LoadCategory.new(load_category_params)
-    @load_category.delivery_modality_id = @delivery_modality
-    @load_category.save
-    flash.now[:notice] = 'Preço por peso incluído.'
-    redirect_to new_delivery_modality_load_category_path
-    
-
+    @delivery_modality.load_categories.new(load_category_params)
+    if @delivery_modality.save
+      redirect_to new_delivery_modality_load_category_path, notice: 'Preço por peso incluído.'
+    else
+      flash.now[:notice] = 'Houve um erro.'
+      render 'new'
+    end
   end
-
+  
   private
 
   def set_load_category
