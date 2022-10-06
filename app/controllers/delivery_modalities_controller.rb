@@ -1,5 +1,6 @@
 class DeliveryModalitiesController < ApplicationController
   def index
+    @load_categories = LoadCategory.all
     @delivery_modalities = DeliveryModality.all
   end
   def new
@@ -15,6 +16,8 @@ class DeliveryModalitiesController < ApplicationController
     end
   end
   def show
+    @delivery_modality = DeliveryModality.find(params[:id])
+    @load_categories = LoadCategory.where(delivery_modality_id: @delivery_modality.id)
     @delivery_modality = DeliveryModality.find(params[:id])
   end
   def edit

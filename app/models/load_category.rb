@@ -5,6 +5,6 @@ class LoadCategory < ApplicationRecord
     "#{min_weight}kg - #{max_weight}kg"
   end
   def formated_value 
-    "R$#{weight_price}"
+    "R$ #{weight_price}"
   end
 end

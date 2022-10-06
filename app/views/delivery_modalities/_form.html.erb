@@ -1,13 +1,15 @@
-<%= form_with(model: @delivery_modality) do |f| %>
-  <div>
-    <%= f.label :mod_name %>:
-    <%= f.text_field :mod_name %>
-  </div>  
-  <div>
-    <%= f.label :mod_price %>:
-    <%= f.text_field :mod_price %>
-  </div>  
-  <div>  
-    <%= f.submit 'Salvar' %>
-  </div>
-<%end%>
+<div>
+  <%= form_with(model: @delivery_modality) do |f| %>
+    <div>
+      <%= f.label :mod_name %>:
+      <%= f.text_field :mod_name %>
+    </div>
+    <div>
+      <%= f.label :mod_price %>:
+      <%= f.text_field :mod_price %>
+    </div>
+    <div>
+      <%= f.submit 'Salvar' %>
+    </div>
+  <%end%>
+</div>

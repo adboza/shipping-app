@@ -5,5 +5,34 @@
           <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= @delivery_modality.mod_price%></dd>
 </dl>
 
-<div><%= link_to t(:edit_function), edit_delivery_modality_path(@delivery_modality)%></div>
+<section id="load_categories">
+  <h3>Preços por peso</h3>
+  <% if @load_categories.any? %>
+    <table>      
+        <tr>
+          <th>Intervalo</th>
+          <th>Valor por km</th>
+          <th>Modalidade</th>
+        </tr>
+        <% @load_categories.each do |load| %>      
+          <tr>
+            <td><%= load.formated_description%></td>
+            <td> <%= load.formated_value%></td>
+            <td> <%= load.delivery_modality.mod_name %></td>
+          </tr>
+          
+        <% end %>
+    </table>
+  <% else %>
+    <p>Não existem preços por peso cadastrados.</p>
+    
+  <% end %>
+</section>
+
+<div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality)%>
+<%= link_to 'Cadastrar Preços por Peso', new_delivery_modality_load_category_path(@delivery_modality) %>
+<% end %>
+</div>
 <div><%= link_to t(:back_function), root_path%></div>

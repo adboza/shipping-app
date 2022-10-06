@@ -1,0 +1,21 @@
+
+<div>
+  <%= form_with(model: [@delivery_modality, @load_category]) do |f| %>
+    <div>
+      <%= f.label :min_weight %>:
+      <%= f.number_field :min_weight %>
+    </div>
+    <div>
+      <%= f.label :max_weight %>:
+      <%= f.number_field :max_weight %>
+    </div>
+    <div>
+      <%= f.label :weight_price %>:
+      <%= f.text_field :weight_price %>
+    </div>
+    
+    <div>
+      <%= f.submit 'Salvar' %>
+    </div>
+  <%end%>
+</div>

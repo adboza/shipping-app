@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário cadastra uma modalidade de entrega' do
   it 'a partir da tela inicial' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
     login_as(user)
     #Act
     visit root_path
@@ -15,7 +15,7 @@ describe 'Usuário cadastra uma modalidade de entrega' do
   end
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
     login_as(user)
     #Act
     visit root_path
@@ -32,7 +32,7 @@ describe 'Usuário cadastra uma modalidade de entrega' do
   end
   it 'com falha' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
     login_as(user)
     DeliveryModality.create!(mod_name: 'Ecológica', mod_price: 4)
     #Act
