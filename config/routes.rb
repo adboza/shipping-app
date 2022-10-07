@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :delivery_modalities, only: [:index, :new, :create, :show, :update, :edit] do
-    resources :load_categories, only: [:new, :create]
+    resources :load_categories, only: [:new, :create, :show, :edit, :update]
   end
   
 

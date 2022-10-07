@@ -1,7 +1,8 @@
 class LoadCategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  
-  before_action :check_user_and_set_mod, only: [:new, :create]  
+  before_action :check_user, only: [:new, :create]  
+  before_action :set_modality, only: [:new, :create, :show]  
+  before_action :set_load_category, only: [:show] 
   
   def new    
     @load_category = LoadCategory.new()
@@ -17,6 +18,9 @@ class LoadCategoriesController < ApplicationController
       redirect_to new_delivery_modality_load_category_path, notice: 'Houve um erro.'
     end
   end
+
+  def show
+  end
   
   private
 
@@ -30,9 +34,12 @@ class LoadCategoriesController < ApplicationController
   end
 end
 
-def check_user_and_set_mod
+def set_modality
+  @delivery_modality = DeliveryModality.find(params[:delivery_modality_id])
+end
+
+def check_user
   if current_user.regular_user? 
     return redirect_to root_path 
-  end
-  @delivery_modality = DeliveryModality.find(params[:delivery_modality_id])
+  end  
 end
