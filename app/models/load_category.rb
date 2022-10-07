@@ -7,7 +7,4 @@ class LoadCategory < ApplicationRecord
   def formated_description
     "#{min_weight}kg - #{max_weight}kg"
   end
-  def formated_value 
-    "R$ #{weight_price}"
-  end
 end

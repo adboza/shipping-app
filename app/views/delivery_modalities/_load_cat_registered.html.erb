@@ -10,7 +10,7 @@
         <% @load_categories.each do |load| %>      
           <tr>
             <td><%= link_to load.formated_description, delivery_modality_load_category_path(@delivery_modality) %></td>
-            <td> <%= load.formated_value%></td>
+            <td> <%= number_to_currency(load.weight_price)%></td>
             <td> <%= load.delivery_modality.mod_name %></td>
           </tr>
           

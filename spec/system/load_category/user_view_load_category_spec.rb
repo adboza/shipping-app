@@ -38,9 +38,9 @@ describe 'Usuario vê categorias de peso' do
     expect(page).to have_content 'Intervalo'
     expect(page).to have_content 'Valor por km'
     expect(page).to have_text '0kg - 10kg'
-    expect(page).to have_content 'R$ 0.5'
+    expect(page).to have_content 'R$ 0,5'
     expect(page).to have_content '11kg - 30kg'
-    expect(page).to have_content 'R$ 0.8'
+    expect(page).to have_content 'R$ 0,8'
   end
 
 end
