@@ -1,4 +1,11 @@
 <h2>Novo Preço por Peso para Modalidade</h2>
- 
+ <% if(@load_category.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @load_category.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h3>Por favor insira novos valores:</h3>
 <%= render 'form' %>

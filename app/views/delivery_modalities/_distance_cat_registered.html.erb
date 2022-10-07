@@ -7,7 +7,7 @@
           <th>Valor por km</th>
           <th>Modalidade</th>
         </tr>
-        <% @distance_categories.each do |distance| %>      
+        <% @distance_categories.each do |distance| %>
           <tr>
             <td><%= distance.formated_description %></td>
             <td> <%= number_to_currency(distance.distance_price)%></td>

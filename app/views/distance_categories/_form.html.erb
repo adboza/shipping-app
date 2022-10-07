@@ -1,0 +1,21 @@
+delivery_modality: modality, distance_price: 0.5, min_distance: 13000, max_distance: 20000)
+<div>
+  <%= form_with(model: [@delivery_modality, @distance_category]) do |f| %>
+    <div>
+      <%= f.label :min_distance %>:
+      <%= f.number_field :min_distance,placeholder: t(:distance_m) %>
+    </div>
+    <div>
+      <%= f.label :max_distance %>:
+      <%= f.number_field :max_distance,placeholder: t(:distance_m) %>
+    </div>
+    <div>
+      <%= f.label :distance_price %>:
+      <%= f.number_field :distance_price, step: 0.01, placeholder: t(:currency) %>
+    </div>
+    
+    <div>
+      <%= f.submit 'Salvar' %>
+    </div>
+  <%end%>
+</div>
