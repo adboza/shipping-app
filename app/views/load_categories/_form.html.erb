@@ -11,7 +11,7 @@
     </div>
     <div>
       <%= f.label :weight_price %>:
-      <%= f.number_field :weight_price %>
+      <%= f.number_field :weight_price, step: 0.01, placeholder: t(:currency) %>
     </div>
     
     <div>

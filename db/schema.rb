@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_194316) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_191920) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "distance_categories", force: :cascade do |t|
+    t.integer "delivery_modality_id", null: false
+    t.decimal "distance_price"
+    t.integer "min_distance"
+    t.integer "max_distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_modality_id"], name: "index_distance_categories_on_delivery_modality_id"
   end
 
   create_table "load_categories", force: :cascade do |t|
@@ -42,5 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_194316) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "distance_categories", "delivery_modalities"
   add_foreign_key "load_categories", "delivery_modalities"
 end
