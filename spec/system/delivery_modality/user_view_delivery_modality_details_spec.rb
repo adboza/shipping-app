@@ -11,7 +11,8 @@ describe 'Usuário vê detalhes da modalidade' do
     click_on 'Modalidades de Entrega'
     click_on 'Expressa'
     #Assert
-    expect(page).to have_content('Modalidade de Entrega Expressa')
+    expect(page).to have_content 'Modalidade de Entrega Expressa'
+    expect(page).to have_content 'Preços por peso'
         
   end
   

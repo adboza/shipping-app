@@ -4,33 +4,7 @@
   <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @delivery_modality.mod_name%></dt>
           <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= @delivery_modality.mod_price%></dd>
 </dl>
-
-<section id="load_categories">
-  
-    <h3>Preços por peso</h3>
-  
-  
-  <% if @load_categories.any? %>
-    <table>      
-        <tr>
-          <th>Intervalo</th>
-          <th>Valor por km</th>
-          <th>Modalidade</th>
-        </tr>
-        <% @load_categories.each do |load| %>      
-          <tr>
-            <td><%= load.formated_description%></td>
-            <td> <%= load.formated_value%></td>
-            <td> <%= load.delivery_modality.mod_name %></td>
-          </tr>
-          
-        <% end %>
-    </table>
-  <% else %>
-    <p>Não existem preços por peso cadastrados.</p>
-    
-  <% end %>
-</section>
+<%= render 'load_cat_registered' %><br>
 
 <div>
 <% if current_user.user_access == 'admin_user' %>

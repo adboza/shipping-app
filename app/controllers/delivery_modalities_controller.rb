@@ -1,4 +1,6 @@
 class DeliveryModalitiesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_user, only: [:new, :create, :update, :edit]
   def index
     @load_categories = LoadCategory.all
     @delivery_modalities = DeliveryModality.all
@@ -28,7 +30,14 @@ class DeliveryModalitiesController < ApplicationController
     @delivery_modality.update(delivery_modality_params)
     redirect_to @delivery_modality, notice: 'Modalidade atualizada com sucesso'
   end
+
   private
+
+  def check_user
+    if current_user.regular_user? 
+      return redirect_to root_path 
+    end
+  end
   
   def delivery_modality_params
     params.require(:delivery_modality).permit(:mod_name, :mod_price)

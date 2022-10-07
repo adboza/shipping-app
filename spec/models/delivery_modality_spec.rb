@@ -11,6 +11,7 @@ RSpec.describe DeliveryModality, type: :model do
         #Assert
         expect(result).to eq false
       end
+
       it 'false when modality price is empty' do
         #Arrange
         modality = DeliveryModality.new(mod_name: 'Ecológica', mod_price: '')
@@ -20,6 +21,7 @@ RSpec.describe DeliveryModality, type: :model do
         expect(result).to eq false
       end
     end
+    
     it 'false when modality name is already in use' do
       #Arrange
       DeliveryModality.create!(mod_name: 'Expressa', mod_price:2)

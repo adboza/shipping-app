@@ -1,3 +1,13 @@
 <h2>Nova <%= DeliveryModality.model_name.human %></h2>
+<div>
+  <% if(@delivery_modality.errors.any?) %>
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+      <% @delivery_modality.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
 <%= render 'form' %>
