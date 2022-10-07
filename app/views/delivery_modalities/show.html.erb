@@ -2,7 +2,7 @@
 
 <dl>
   <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @delivery_modality.mod_name%></dt>
-          <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> R$ <%= @delivery_modality.mod_price%></dd>
+          <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> <%= number_to_currency(@delivery_modality.mod_price) %></dd>
 </dl>
 <%= render 'load_cat_registered' %><br>
 
