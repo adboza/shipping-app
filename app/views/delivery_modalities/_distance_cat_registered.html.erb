@@ -1,0 +1,23 @@
+<section id="distance_categories">
+  <h3>Preços por distância - <%= @delivery_modality.mod_name %></h3>  
+  <% if @distance_categories.any? %>
+    <table>      
+        <tr>
+          <th>Intervalo</th>
+          <th>Valor por km</th>
+          <th>Modalidade</th>
+        </tr>
+        <% @distance_categories.each do |distance| %>      
+          <tr>
+            <td><%= distance.formated_description %></td>
+            <td> <%= number_to_currency(distance.distance_price)%></td>
+            <td> <%= distance.delivery_modality.mod_name %></td>
+          </tr>
+          
+        <% end %>
+    </table>
+  <% else %>
+    <p>Não existem preços por distância cadastrados.</p>
+    
+  <% end %>
+</section>

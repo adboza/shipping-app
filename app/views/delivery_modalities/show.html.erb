@@ -5,7 +5,7 @@
           <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> <%= number_to_currency(@delivery_modality.mod_price) %></dd>
 </dl>
 <%= render 'load_cat_registered' %><br>
-
+<%= render 'distance_cat_registered' %><br>
 <div>
 <% if current_user.user_access == 'admin_user' %>
 <%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality)%> <br>

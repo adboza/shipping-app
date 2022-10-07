@@ -2,7 +2,8 @@ pt-BR:
   activerecord:
     models:
       load_category: 
-        one: 'Preço por peso'       
+        one: 'Preço por peso'
+        other: 'Preços por peso'   
     attributes:
       load_category:
         min_weight: 'Peso mínimo'

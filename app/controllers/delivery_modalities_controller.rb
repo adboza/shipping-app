@@ -1,13 +1,18 @@
 class DeliveryModalitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user, only: [:new, :create, :update, :edit]
+  before_action :set_modality, only: [:show, :edit, :update]
+
   def index
-    @load_categories = LoadCategory.all
     @delivery_modalities = DeliveryModality.all
+    @load_categories = LoadCategory.all
+    @distance_categories = DistanceCategory.all
   end
+
   def new
     @delivery_modality = DeliveryModality.new()
   end
+
   def create
     @delivery_modality = DeliveryModality.new(delivery_modality_params)
     if @delivery_modality.save
@@ -17,16 +22,16 @@ class DeliveryModalitiesController < ApplicationController
       render 'new'
     end
   end
+
   def show
-    @delivery_modality = DeliveryModality.find(params[:id])
     @load_categories = LoadCategory.where(delivery_modality_id: @delivery_modality.id)
-    @delivery_modality = DeliveryModality.find(params[:id])
+    @distance_categories = DistanceCategory.where(delivery_modality_id: @delivery_modality.id)
   end
+
   def edit
-    @delivery_modality = DeliveryModality.find(params[:id])
   end
+
   def update
-    @delivery_modality = DeliveryModality.find(params[:id])
     @delivery_modality.update(delivery_modality_params)
     redirect_to @delivery_modality, notice: 'Modalidade atualizada com sucesso'
   end
@@ -41,5 +46,9 @@ class DeliveryModalitiesController < ApplicationController
   
   def delivery_modality_params
     params.require(:delivery_modality).permit(:mod_name, :mod_price)
+  end
+
+  def set_modality
+    @delivery_modality = DeliveryModality.find(params[:id])
   end
 end

@@ -4,6 +4,7 @@ class LoadCategory < ApplicationRecord
   validates :max_weight, comparison: { greater_than: :min_weight }
   validates :min_weight,:max_weight, uniqueness: true
   belongs_to :delivery_modality
+  
   def formated_description
     "#{min_weight}kg - #{max_weight}kg"
   end

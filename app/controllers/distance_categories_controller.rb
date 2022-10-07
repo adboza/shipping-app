@@ -1,0 +1,2 @@
+class DistanceCategoriesController < ApplicationController
+end
