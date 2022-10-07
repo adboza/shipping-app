@@ -3,7 +3,7 @@
 <dl>
   <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @load_category.delivery_modality.mod_name%></dt>
     <dd><strong>Faixa de peso:</strong> <%= @load_category.formated_description%></dd>
-    <dd><strong><%= LoadCategory.human_attribute_name(:weight_price) %>:</strong> R$ <%= @load_category.weight_price%></dd>
+    <dd><strong><%= LoadCategory.human_attribute_name(:weight_price) %>:</strong> <%= number_to_currency(@load_category.weight_price) %></dd>
 </dl>
 <div>
 <% if current_user.user_access == 'admin_user' %>
