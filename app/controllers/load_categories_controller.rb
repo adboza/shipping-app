@@ -1,12 +1,11 @@
 class LoadCategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :check_user, only: [:new, :create]  
-  before_action :set_modality, only: [:new, :create, :show]  
-  before_action :set_load_category, only: [:show] 
+  before_action :set_modality, only: [:new, :create, :show, :edit, :update]  
+  before_action :set_load_category, only: [:show, :edit, :update] 
   
   def new    
     @load_category = LoadCategory.new()
-    #@load_categories = LoadCategory.where(delivery_modality_id: @delivery_modality.id)
   end
 
   def create
@@ -22,6 +21,19 @@ class LoadCategoriesController < ApplicationController
   def show
   end
   
+  def edit
+    @delivery_modalities = DeliveryModality.all
+  end
+
+  def update
+    if @load_category.update(load_category_params)
+      redirect_to @delivery_modality, notice: 'Preço por peso atualizado com sucesso!'
+    else
+      flash.now[:notice] = 'Não foi possível atualizar o preço por peso'
+      render 'edit'
+    end
+  end
+
   private
 
   def set_load_category
