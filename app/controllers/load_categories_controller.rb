@@ -11,7 +11,7 @@ class LoadCategoriesController < ApplicationController
   def create
     @delivery_modality.load_categories.new(load_category_params)
     if @delivery_modality.save
-      redirect_to new_delivery_modality_load_category_path, notice: 'Preço por peso incluído.'
+      redirect_to @delivery_modality, notice: 'Preço por peso incluído.'
     else
       @delivery_modality = DeliveryModality.find(params[:delivery_modality_id])
       redirect_to new_delivery_modality_load_category_path, notice: 'Houve um erro.'
@@ -23,6 +23,7 @@ class LoadCategoriesController < ApplicationController
   
   def edit
     @delivery_modalities = DeliveryModality.all
+    @load_categories = LoadCategory.all
   end
 
   def update

@@ -1,12 +1,3 @@
 <h2>Novo <%= DistanceCategory.model_name.human %></h2>
-<div>
-  <% if(@distance_category.errors.any?) %>
-    <p>Verifique os erros abaixo:</p>
-    <ul>
-      <% @distance_category.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+
 <%= render 'form' %>
