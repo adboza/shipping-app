@@ -20,11 +20,6 @@ RSpec.describe LoadCategory, type: :model do
         expect(result).to eq false
       end
 
-
-
-
-
-
       it 'false when min weight is bigger than max weight' do
         #Arrange
         #Arrange
@@ -112,6 +107,17 @@ RSpec.describe LoadCategory, type: :model do
         modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: 4)
         LoadCategory.create!(min_weight: 2, max_weight: 4, weight_price: 1, delivery_modality_id: modality.id)
         load = LoadCategory.new(min_weight: 2, max_weight: 6, weight_price: 1.2,delivery_modality_id: modality.id)
+        #Act
+        result = load.valid?
+        #Assert
+        expect(result).to eq false
+      end
+
+      it 'false when load weight is not unique' do
+        #Arrange
+        modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: 4)
+        LoadCategory.create!(min_weight: 1, max_weight: 4, weight_price: 1, delivery_modality_id: modality.id)
+        load = LoadCategory.new(min_weight: 2, max_weight: 4, weight_price: 1.2,delivery_modality_id: modality.id)
         #Act
         result = load.valid?
         #Assert
