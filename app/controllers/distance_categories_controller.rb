@@ -1,7 +1,7 @@
 class DistanceCategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :check_user, only: [:new, :create]
-  before_action :set_modality, only: [:new, :create]
+  before_action :set_modality, only: [:new, :create, :show]
 
   def new
     @distance_category = DistanceCategory.new
@@ -16,6 +16,10 @@ class DistanceCategoriesController < ApplicationController
       flash.now[:notice] = 'Não foi possível'
       render 'new'
     end
+  end
+
+  def show
+    @distance_category = DistanceCategory.find(params[:id])
   end
 
   private

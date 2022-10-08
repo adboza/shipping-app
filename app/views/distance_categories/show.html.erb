@@ -1,0 +1,17 @@
+<h2>Preços por Distância para Modalidade</h2>
+
+<dl>
+  <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @distance_category.delivery_modality.mod_name%></dt>
+    <dd><strong>Distância abrangida:</strong> <%= @distance_category.formated_description%></dd>
+    <dd><strong><%= DistanceCategory.human_attribute_name(:distance_price) %>:</strong> <%= number_to_currency(@distance_category.distance_price) %></dd>
+</dl>
+<%
+=begin%>
+ <div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Editar cadastro', edit_delivery_modality_distance_category_path(@distance_category)%> 
+<% end %>
+</div> 
+<%
+=end%>
+<div><%= link_to t(:back_function), root_path%></div>

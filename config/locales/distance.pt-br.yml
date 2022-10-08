@@ -1,0 +1,11 @@
+pt-BR:
+  distance:
+    centi:
+      one: "centímetro"
+      other: "centímetros"
+    unit:
+      one: "metro"
+      other: "metros"
+    thousand:
+      one: "kilometro"
+      other: "kilometros"
