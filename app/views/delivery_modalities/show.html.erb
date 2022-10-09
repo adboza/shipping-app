@@ -4,13 +4,21 @@
   <dt><strong><%= DeliveryModality.human_attribute_name(:mod_name) %>:</strong> <%= @delivery_modality.mod_name%></dt>
           <dd><strong><%= DeliveryModality.human_attribute_name(:mod_price) %>:</strong> <%= number_to_currency(@delivery_modality.mod_price) %></dd>
 </dl>
-<%= render 'load_cat_registered' %><br>
-<%= render 'distance_cat_registered' %><br>
 <div>
 <% if current_user.user_access == 'admin_user' %>
-<%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality)%> <br>
-<%= link_to 'Cadastrar Preços por Peso', new_delivery_modality_load_category_path(@delivery_modality) %><br>
-<%= link_to 'Cadastrar Preços por Distância', new_delivery_modality_distance_category_path(@delivery_modality) %>
+<%= link_to 'Editar Modalidade', edit_delivery_modality_path(@delivery_modality), class:"btn btn-warning navbar-brand"%> <br>
 <% end %>
-</div>
-<div><%= link_to t(:back_function), root_path%></div>
+</div><br>
+<%= render 'load_cat_registered' %>
+<div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Cadastrar Preços por Peso', new_delivery_modality_load_category_path(@delivery_modality), class:"btn btn-warning navbar-brand" %>
+<% end %>
+</div><br>
+<%= render 'distance_cat_registered' %>
+<div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Cadastrar Preços por Distância', new_delivery_modality_distance_category_path(@delivery_modality), class:"btn btn-warning navbar-brand" %>
+<% end %>
+</div><br>
+<div><%= link_to t(:back_function), root_path, class:"btn btn-warning navbar-brand" %></div>

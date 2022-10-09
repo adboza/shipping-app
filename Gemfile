@@ -20,6 +20,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem 'bootstrap'
 
+gem 'importmap-rails'
+
 gem 'devise'
 
 group :development, :test do

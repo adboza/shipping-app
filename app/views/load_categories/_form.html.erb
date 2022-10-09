@@ -1,21 +1,21 @@
 
-<div>
+<div class="container-fluid mb-3">
   <%= form_with(model: [@delivery_modality, @load_category]) do |f| %>
     <div>
-      <%= f.label :min_weight %>:
-      <%= f.number_field :min_weight %>
+      <%= f.label :min_weight, class:"form-label"  %>:
+      <%= f.number_field :min_weight, class:"form-control" %>
     </div>
     <div>
-      <%= f.label :max_weight %>:
-      <%= f.number_field :max_weight %>
+      <%= f.label :max_weight, class:"form-label"  %>:
+      <%= f.number_field :max_weight, class:"form-control" %>
     </div>
     <div>
-      <%= f.label :weight_price %>:
-      <%= f.number_field :weight_price, step: 0.01 %>
+      <%= f.label :weight_price, class:"form-label"  %>:
+      <%= f.number_field :weight_price, step: 0.01, class:"form-control" %>
     </div>
     
     <div>
-      <%= f.submit 'Salvar' %>
+      <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>
     </div>
   <%end%>
 </div>

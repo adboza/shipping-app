@@ -1,15 +1,15 @@
-<section id="load_categories">
+<section id="load_categories" class="container-fluid">
   <h3>Preços por peso - <%= @delivery_modality.mod_name %></h3>  
   <% if @load_categories.any? %>
-    <table>      
-        <tr>
-          <th>Intervalo</th>
-          <th>Valor por km</th>
-          <th>Modalidade</th>
+    <table class="table">      
+        <tr class="table-secondary">
+          <th scope="col">Intervalo</th>
+          <th scope="col">Valor por km</th>
+          <th scope="col">Modalidade</th>
         </tr>
         <% @load_categories.each do |load| %>      
           <tr>
-            <td><%= link_to load.formated_description, delivery_modality_load_category_path(@delivery_modality, load ) %></td>
+            <td><%= link_to load.formated_description, delivery_modality_load_category_path(@delivery_modality, load ) %> <%= link_to 'Detalhes', delivery_modality_load_category_path(@delivery_modality, load ), class:"btn btn-outline-secondary btn-sm" %></td>
             <td> <%= number_to_currency(load.weight_price)%></td>
             <td> <%= load.delivery_modality.mod_name %></td>
           </tr>

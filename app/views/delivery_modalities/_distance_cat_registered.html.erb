@@ -1,15 +1,15 @@
-<section id="distance_categories">
+<section id="distance_categories" class="container-fluid">
   <h3>Preços por distância - <%= @delivery_modality.mod_name %></h3>  
   <% if @distance_categories.any? %>
-    <table>      
-        <tr>
-          <th>Intervalo</th>
-          <th>Valor por km</th>
-          <th>Modalidade</th>
+    <table class="table">      
+        <tr class="table-secondary">
+          <th scope="col">Intervalo</th>
+          <th scope="col">Valor por km</th>
+          <th scope="col">Modalidade</th>
         </tr>
         <% @distance_categories.each do |distance| %>
           <tr>
-            <td><%= link_to distance.formated_description, delivery_modality_distance_category_path(@delivery_modality, distance) %>
+            <td><%= link_to distance.formated_description, delivery_modality_distance_category_path(@delivery_modality, distance) %> <%= link_to 'Detalhes', delivery_modality_distance_category_path(@delivery_modality, distance), class:"btn btn-outline-secondary btn-sm" %>
             </td>
             <td> <%= number_to_currency(distance.distance_price)%></td>
             <td> <%= distance.delivery_modality.mod_name %></td>
