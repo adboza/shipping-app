@@ -9,4 +9,5 @@ pt-BR:
         min_distance: 'Distância mínima'
         max_distance: 'Distância máxima'
         distance_price: 'Preço por km'
+        delivery_time: 'Prazo de entrega'
     

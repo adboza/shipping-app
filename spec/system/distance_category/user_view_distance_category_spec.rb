@@ -7,7 +7,7 @@ describe 'Usuario vê categorias de distância' do
     modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
     LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
-    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.2, min_distance: 100, max_distance: 12000)
+    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.2, min_distance: 100, max_distance: 12000, delivery_time: 36)
 
     #Act
     login_as(user)
@@ -49,8 +49,8 @@ describe 'Usuario vê categorias de distância' do
     modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
     LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
-    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.2, min_distance: 100, max_distance: 12000)
-    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.5, min_distance: 13000, max_distance: 20000)
+    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.2, min_distance: 100, max_distance: 12000, delivery_time: 34)
+    DistanceCategory.create!(delivery_modality: modality, distance_price: 0.5, min_distance: 13000, max_distance: 20000, delivery_time: 36)
 
     #Act
     login_as(user)
@@ -69,6 +69,8 @@ describe 'Usuario vê categorias de distância' do
       expect(page).to have_content 'R$ 0,20'
       expect(page).to have_content 'R$ 0,50'
       expect(page).to have_content 'Expressa'
+      expect(page).to have_content '34h'
+      expect(page).to have_content '36h'
     end
   end
 end

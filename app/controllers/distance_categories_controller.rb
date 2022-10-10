@@ -38,7 +38,7 @@ class DistanceCategoriesController < ApplicationController
   private
 
   def distance_category_params
-    params.require(:distance_category).permit(:min_distance, :max_distance, :distance_price, :delivery_modality_id)
+    params.require(:distance_category).permit(:min_distance, :max_distance, :distance_price, :delivery_modality_id, :delivery_time)
   end
   
   def set_modality

@@ -15,12 +15,14 @@ describe 'Usuário registra valores e distâncias da modalidade' do
     fill_in 'Distância mínima', with: 100
     fill_in 'Distância máxima', with: 10000
     fill_in 'Preço por km', with: 0.5
+    fill_in 'Prazo de entrega', with: 36
     click_on 'Salvar'
     #Assert
     expect(page).to have_content 'Preço por distância incluído'
     within('#distance_categories') do
       expect(page).to have_content '0km - 10km'
       expect(page).to have_content '0,50'
+      expect(page).to have_content '36h'
       expect(page).to have_content 'Expressa'
     end
   end
