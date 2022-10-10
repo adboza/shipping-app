@@ -1,0 +1,27 @@
+pt-BR:  
+  activerecord:
+    models:
+      vehicle: 
+        one: 'Veículo'
+        other: 'Veículos'
+      vehicle_type: 
+        one: 'Tipo de veículo'
+        other: 'Tipo de veículos'
+    attributes:
+      vehicle:
+        year: 'Ano'
+        vehicle_type_id: 'Tipo de veículo'
+        licence_plate: 'Placa'
+        delivery_time: 'Prazo de entrega'
+        unavailable: 'Indisponível'
+        on_delivery: 'Em rota de entrega'
+        available: 'Disponível'
+        load_capacity: 'Capacidade máxima de carga'
+      vehicle_type:
+        vehicle_type: 'Tipo de veículo'
+        motorcycle: 'Moto'
+        bicycle: 'Bicicleta'
+        utility_vehicle: 'Veículo utilitário'
+        car: 'Carro'
+        
+    

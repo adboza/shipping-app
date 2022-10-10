@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :distance_categories, only: [:new, :create, :show, :edit, :update]
   end
   
-
+  resources :vehicles, only: [:index]
 end
