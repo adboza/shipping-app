@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuario edita preços por peso dentro de modalidade de entrega' do
  it 'a partir da página inicial no modelo relativo e vê campos' do
-  user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+  user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     
   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
   LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
@@ -24,7 +24,7 @@ describe 'Usuario edita preços por peso dentro de modalidade de entrega' do
  end
 
  it 'e edita peso com sucesso' do
-  user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+  user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     
   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
   LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
@@ -46,7 +46,7 @@ describe 'Usuario edita preços por peso dentro de modalidade de entrega' do
  end
 
  it 'e edita peso com sucesso' do
-  user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+  user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     
   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
   LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)

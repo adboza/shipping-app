@@ -3,4 +3,5 @@ class DeliveryModality < ApplicationRecord
   validates :mod_name, uniqueness: true
   has_many :load_categories
   has_many :distance_categories
+  has_many :vehicles, through: :vehicle_types
 end

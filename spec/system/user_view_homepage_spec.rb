@@ -16,12 +16,12 @@ describe 'Usuario visita tela inicial' do
 
   it 'e realiza login com sucesso' do
     # Arrange 
-    User.create!(name:'Joao', email:'joao@email.com', password:'123456')
+    User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456')
 
     #Act
     visit root_path
     click_on 'Entrar'
-    fill_in 'E-mail', with: 'joao@email.com'
+    fill_in 'E-mail', with: 'joao@sistemadefrete.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Log in'
 

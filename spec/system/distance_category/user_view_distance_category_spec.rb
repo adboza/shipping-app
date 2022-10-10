@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuario vê categorias de distância' do
  it 'a partir da página inicial no modelo relativo' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :regular_user)    
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :regular_user)    
     modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
     LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
@@ -23,7 +23,7 @@ describe 'Usuario vê categorias de distância' do
   end
   it 'e não existem categorias por distância para o modelo' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :regular_user)    
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :regular_user)    
     modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
     LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)
@@ -45,7 +45,7 @@ describe 'Usuario vê categorias de distância' do
   end
   it 'e visualiza lista' do
     #Arrange
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :regular_user)    
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :regular_user)    
     modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     LoadCategory.create!(min_weight: 0, max_weight: 10, weight_price: 0.5, delivery_modality: modality)
     LoadCategory.create!(min_weight: 11, max_weight: 30, weight_price: 0.8, delivery_modality: modality)

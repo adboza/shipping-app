@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário edita uma modalidade de entrega' do
   it 'e não tem acesso admin' do
     #Arrange
-    user = User.create!(name:'Edna', email:'edna@email.com', password:'123456', user_access: :regular_user)
+    user = User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
     login_as(user)
     delivery_modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     #Act

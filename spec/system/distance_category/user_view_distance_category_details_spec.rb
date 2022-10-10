@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuario vê detalhes de categoria de distância' do
  it 'a partir da página inicial no modelo relativo e é admin' do
-  user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+  user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     
   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
   DistanceCategory.create!(min_distance: 100, max_distance: 9900, distance_price: 0.5, delivery_modality: modality, delivery_time: 36)
@@ -29,7 +29,7 @@ describe 'Usuario vê detalhes de categoria de distância' do
  end
 
  it 'a partir da página inicial no modelo relativo e é regular' do
-  user = User.create!(name:'Edna', email:'edna@email.com', password:'123456', user_access: :regular_user)
+  user = User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
     
   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
   DistanceCategory.create!(min_distance: 100, max_distance: 9900, distance_price: 0.5, delivery_modality: modality, delivery_time: 34)
