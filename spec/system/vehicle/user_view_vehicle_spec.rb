@@ -18,7 +18,7 @@ describe 'Usuário vê veículos cadastrados' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456')
     login_as(user)
     tipo = VehicleType.create!(vehicle_type: :motorcycle)
-    Vehicle.create!(vehicle_type: tipo, licence_plate: 'ABC4344', year: 2022, status: :available)
+    Vehicle.create!(vehicle_type: tipo, licence_plate: 'ABC4344', year: 2022, status: :available, load_capacity: 23)
     #Act
     visit root_path
     click_on 'Veículos'
@@ -30,18 +30,18 @@ describe 'Usuário vê veículos cadastrados' do
     expect(page).to have_content '2022'
   end
 
-  # it 'e não vê modalidades cadastradas' do
-  #   #Arrange
-  #   user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456')
-  #   login_as(user)
-  #   #Act
-  #   visit root_path
-  #   click_on 'Modalidades de Entrega'
-  #   #Assert
-  #   within('main') do
-  #     expect(page).to have_content 'Modalidades de Entrega'
-  #   end
-  #   expect(page).not_to have_content 'Nome modalidade: Ecológica'
-  #   expect(page).to have_content 'Não existem modalidades cadastradas'
-  # end
+  it 'e não vê veículos cadastrados' do
+    #Arrange
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456')
+    login_as(user)
+    #Act
+    visit root_path
+    click_on 'Veículos'
+    #Assert
+    within('main') do
+      expect(page).to have_content 'Veículos'
+    end
+    expect(page).not_to have_content 'Placa'
+    expect(page).to have_content 'Não existem veículos cadastrados'
+  end
 end

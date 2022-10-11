@@ -1,0 +1,15 @@
+<h2><%= Vehicle.model_name.human %> <%= @vehicle.licence_plate%></h2>
+
+<dl>
+  <dt><strong><%= Vehicle.human_attribute_name(:licence_plate) %>:</strong> <%= @vehicle.licence_plate%></dt>
+  <dd><strong><%= Vehicle.human_attribute_name(:year) %>:</strong> <%= @vehicle.year %></dd>
+  <dd><strong><%= Vehicle.human_attribute_name(:load_capacity) %>:</strong> <%= @vehicle.load_capacity %>kg</dd>
+  <dd><strong><%= Vehicle.human_attribute_name(:status) %>:</strong> <%= t(@vehicle.status) %></dd>
+  <dd><strong><%= VehicleType.human_attribute_name(:vehicle_type) %>:</strong> <%= t(@vehicle.vehicle_type.vehicle_type) %></dd>
+</dl>
+<div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Editar cadastro', edit_vehicle_path(@vehicle), class:"btn btn-warning navbar-brand"%> <br>
+<% end %>
+</div><br>
+<div><%= link_to t(:back_function), root_path, class:"btn btn-warning navbar-brand" %></div>
