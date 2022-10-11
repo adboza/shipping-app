@@ -2,6 +2,7 @@
 
 <dl>
   <dt><strong><%= Vehicle.human_attribute_name(:licence_plate) %>:</strong> <%= @vehicle.licence_plate%></dt>
+  <dd><strong><%= Vehicle.human_attribute_name(:model) %>:</strong> <%= @vehicle.model %>kg</dd>
   <dd><strong><%= Vehicle.human_attribute_name(:year) %>:</strong> <%= @vehicle.year %></dd>
   <dd><strong><%= Vehicle.human_attribute_name(:load_capacity) %>:</strong> <%= @vehicle.load_capacity %>kg</dd>
   <dd><strong><%= Vehicle.human_attribute_name(:status) %>:</strong> <%= t(@vehicle.status) %></dd>

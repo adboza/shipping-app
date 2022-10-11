@@ -13,8 +13,9 @@
         <div class="card-body">
           <dl>        
               <dt class="card-title"><%= VehicleType.human_attribute_name(:vehicle_type) %>: <%=t(vehicle.vehicle_type.vehicle_type)%> </dt>
-              <dd  class="card-text"><%= Vehicle.human_attribute_name(:licence_plate) %>: <%= vehicle.licence_plate %></dd>
-              <dd  class="card-text"><%= Vehicle.human_attribute_name(:year) %>: <%= vehicle.year %></dd>
+              <dd  class="card-text"><%= Vehicle.human_attribute_name(:licence_plate) %>: <%= vehicle.licence_plate %>
+              </dd><dd  class="card-text"><%= Vehicle.human_attribute_name(:model) %>: <%= vehicle.model %></dd>
+              <dd  class="card-text"><%= Vehicle.human_attribute_name(:year) %>: <%= vehicle.year %></dd>              
               <dd  class="card-text"><%= Vehicle.human_attribute_name(:load_capacity) %>: <%= vehicle.load_capacity %></dd>
               <dd  class="card-text"><%= Vehicle.human_attribute_name(:status) %>: <%= t(vehicle.status) %></dd>       
           </dl>

@@ -36,7 +36,7 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:licence_plate, :status, :year, :load_capacity, :vehicle_type_id)
+    params.require(:vehicle).permit(:licence_plate, :status, :year, :load_capacity, :vehicle_type_id, :model)
   end
   def check_user
     if current_user.regular_user? 

@@ -5,8 +5,8 @@ describe 'Usuario edita veículos' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)    
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, load_capacity: 300)
-    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, load_capacity: 3600)
+    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
     #Act
     login_as(user)
@@ -29,8 +29,8 @@ describe 'Usuario edita veículos' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)    
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, load_capacity: 300)
-    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, load_capacity: 3600)
+    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
     #Act
     login_as(user)
@@ -50,8 +50,8 @@ describe 'Usuario edita veículos' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)    
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, load_capacity: 300)
-    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, load_capacity: 3600)
+    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
     #Act
     login_as(user)
@@ -73,8 +73,8 @@ describe 'Usuario edita veículos' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)    
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, load_capacity: 300)
-    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, load_capacity: 3600)
+    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
     #Act
     login_as(user)
@@ -89,5 +89,27 @@ describe 'Usuario edita veículos' do
     expect(page).to have_content 'Veículo atualizado com sucesso'
     expect(page).to have_content 'Placa: CDF1000'
     expect(page).not_to have_content 'CDE1000'
+  end
+  
+  it 'e edita modelo com sucesso' do       
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)    
+    car = VehicleType.create!(vehicle_type: :car)
+    utility = VehicleType.create!(vehicle_type: :utility_vehicle)
+    Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+    Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'BestA', load_capacity: 3600)
+
+    #Act
+    login_as(user)
+    visit root_path
+    click_on 'Veículos'
+    click_on 'Detalhes - CDE1000'
+    click_on 'Editar cadastro'
+    fill_in 'Modelo', with: 'Kombi'
+    click_on 'Salvar'
+
+    #Assert
+    expect(page).to have_content 'Veículo atualizado com sucesso'
+    expect(page).to have_content 'Modelo: Kombi'
+    expect(page).not_to have_content 'BestA'
   end
 end

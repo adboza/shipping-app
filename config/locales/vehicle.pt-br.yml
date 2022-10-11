@@ -17,6 +17,7 @@ pt-BR:
         on_delivery: 'Em rota de entrega'
         available: 'Disponível'
         load_capacity: 'Capacidade máxima de carga'
+        model: 'Modelo'
         vehicle_type: 'Tipo de veículo'
         vehicle_type_id: 'Tipo de veículo'
         motorcycle: 'Moto'

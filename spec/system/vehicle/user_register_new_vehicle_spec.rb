@@ -31,6 +31,7 @@ describe 'Usuário cadastra um veículo' do
     click_on 'Cadastrar Veículo'
     
     fill_in 'Placa', with: 'ABC2500'
+    fill_in 'Modelo', with: 'Fusca'
     select 'Em rota de entrega', from: 'Status'
     fill_in 'Ano', with: 2.days.ago
     fill_in 'Capacidade máxima de carga', with: 300
@@ -51,7 +52,7 @@ describe 'Usuário cadastra um veículo' do
   #   car = VehicleType.create!(vehicle_type: :car)
   #   utility = VehicleType.create!(vehicle_type: :utility_vehicle)
   #   login_as(user)
-  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, load_capacity: 300)
+  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, model: 'Fusca', load_capacity: 300)
   #   #Act
   #   visit root_path
   #   click_on 'Modalidades de Entrega'
@@ -75,8 +76,8 @@ describe 'Usuário cadastra um veículo' do
   #   login_as(user)
   #   car = VehicleType.create!(vehicle_type: :car)
   #   utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, load_capacity: 300)
-  #   Vehicle.create!(licence_plate: CDE1000, status: :available, year: 2021, vehicle_type: utility, load_capacity: 3600)
+  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, model: 'Fusca', load_capacity: 300)
+  #   Vehicle.create!(licence_plate: CDE1000, status: :available, year: 2021, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
  
   #   #Act
   #   visit root_path

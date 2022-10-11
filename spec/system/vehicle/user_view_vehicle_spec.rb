@@ -18,7 +18,7 @@ describe 'Usuário vê veículos cadastrados' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456')
     login_as(user)
     tipo = VehicleType.create!(vehicle_type: :motorcycle)
-    Vehicle.create!(vehicle_type: tipo, licence_plate: 'ABC4344', year: 2022, status: :available, load_capacity: 23)
+    Vehicle.create!(vehicle_type: tipo, licence_plate: 'ABC4344', year: 2022, status: :available, model: 'Fusca', load_capacity: 23)
     #Act
     visit root_path
     click_on 'Veículos'
