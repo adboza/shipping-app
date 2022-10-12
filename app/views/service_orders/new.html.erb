@@ -1,0 +1,13 @@
+<h2>Nova <%= ServiceOrder.model_name.human %></h2>
+<div>
+  <% if(@service_order.errors.any?) %>
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+      <% @service_order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<%= render 'form' %>

@@ -26,23 +26,4 @@ describe 'Usuário registra valores e distâncias da modalidade' do
       expect(page).to have_content 'Expressa'
     end
   end
-  # it 'a partir da tela inicial com erro' do
-  #   #Arrange
-  #   user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
-  #   login_as(user)
-  #   DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
-    
-  #   #Act
-  #   visit root_path
-  #   click_on 'Modalidades de Entrega'
-  #   click_on 'Expressa'
-  #   click_on 'Cadastrar Preços por Distância'
-  #   fill_in 'Distância mínima', with: 100
-  #   fill_in 'Distância máxima', with: 10000
-  #   fill_in 'Preço por km', with: ''
-  #   click_on 'Salvar'
-  #   #Assert
-  #   expect(page).to have_content 'alguma coisa deu errado'
-    
-  # end
 end

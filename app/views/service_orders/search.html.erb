@@ -1,0 +1,6 @@
+<h1>Resultados da Busca por: <%= @tracking_code %></h1>
+<p><%= @service_orders.count %> <%= ServiceOrder.model_name.human(count: @service_orders.count).downcase %> <%= t(:found, count: @service_orders.count) %></p>
+
+<% @service_orders.each do |service_order|%>
+  <%= render service_order %>
+<% end %>

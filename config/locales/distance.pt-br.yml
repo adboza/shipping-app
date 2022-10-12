@@ -6,6 +6,4 @@ pt-BR:
     unit:
       one: "metro"
       other: "metros"
-    thousand:
-      one: "kilometro"
-      other: "kilometros"
+    thousand: "km"

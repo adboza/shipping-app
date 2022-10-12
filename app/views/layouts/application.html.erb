@@ -23,19 +23,19 @@
             <% end %>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <% if user_signed_in? %>
-              <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= link_to 'Modalidades de Entrega', delivery_modalities_path, class:"nav-link" %></li>
-              <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= link_to 'Veículos', vehicles_path, class:"nav-link" %></li>
-                <%if current_user.user_access == 'regular_user' %>
-                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= link_to 'Vaiter link inicializar Ordem de Entrega', delivery_modalities_path, class:"nav-link" %></li>
-                <% end %>
-                <%if current_user.user_access == 'admin_user' %>
-                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= link_to 'Vai ter link criar Ordem de Entrega', delivery_modalities_path, class:"nav-link" %></li>
-                <% end %>
-              <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= current_user.name %></li>
-              <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item d-flex justify-content-between align-items-center"><%= button_to 'Sair', destroy_user_session_path, type:"button", class:"btn btn-warning navbar-brand btn-sm", method: :delete %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= link_to 'Modalidades de Entrega', delivery_modalities_path, class:"nav-link" %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= link_to 'Veículos', vehicles_path, class:"nav-link" %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= link_to 'Ordens de Serviço', service_orders_path, class:"nav-link" %></li>              
+                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= current_user.name %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item d-flex justify-content-between align-items-center"><%= button_to 'Sair', destroy_user_session_path, type:"button", class:"btn btn-warning navbar-brand btn-sm", method: :delete %></li>
         
-              <% else %>
-              <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= link_to 'Entrar', new_user_session_path, class:"btn btn-warning navbar-brand btn-sm" %></li>
+              <% else %>                
+                <li class="list-group d-flex justify-content-between align-items-center  px-2" class="nav-item"><%= link_to 'Entrar', new_user_session_path, class:"btn btn-warning navbar-brand btn-sm" %></li>
+              <% end %>
+              <%= form_with(url: search_service_orders_path, method: :get, class:"d-flex") do |f| %>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= f.label :query, 'Buscar Encomenda:' %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= f.text_field :query, placeholder: "Código de Rastreio",class:"form-control me-2" %></li>
+                <li class="list-group d-flex justify-content-between align-items-center  px-2 " class="nav-item"><%= f.submit 'Buscar', class:"btn btn-warning navbar-brand btn-sm"%></li>
               <% end %>
             </ul>
           </div>

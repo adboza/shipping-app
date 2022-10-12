@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   end
   
   resources :vehicles, only: [:index, :new, :create, :show, :edit, :update]
+
+  resources :service_orders, only: [:index, :new, :show, :create, :edit, :update] do
+    get 'search', on: :collection
+  end
+
 end

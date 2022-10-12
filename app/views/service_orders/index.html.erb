@@ -1,0 +1,29 @@
+<div class="container-fluid " >
+  <h2 class="col" >Ordens de Serviço</h2>  
+  <div class="col" >
+  <% if current_user.user_access == 'admin_user' %>
+  <%= link_to 'Cadastrar Ordem de Serviço', new_service_order_path ,type:"button", class:"btn btn-warning navbar-brand"%>  
+  <% end %>
+  </div>
+</div><br>
+<div class="container-fluid row px-4" >
+  <% if @service_orders.any? %>
+    <% @service_orders.each do |order|%>
+      <div class="card alert alert-secondary me-4" style="width: 20rem;" >
+        <div class="card-body">
+          <dl>        
+              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:tracking_code) %>: <%= order.tracking_code %> </dt>
+              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:departure_address) %>: <%= order.departure_address %> </dt>
+              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:delivery_address) %>: <%= order.delivery_address %> </dt>
+              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:shipping_distance) %>: <%= number_to_human(order.shipping_distance, units: :distance) %> </dt>
+              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:goods_weight) %>: <%= order.goods_weight %> kg</dt>
+              <dd  class="card-text"><%= ServiceOrder.human_attribute_name(:comments) %>: <%= order.comments %></dd>       
+          </dl>
+          <%= link_to "Detalhes - #{order.tracking_code}", order, type:"button", class:"btn btn-warning"%>
+        </div>
+      </div>
+    <%end%>
+  <% else %>
+    <p>Não existem ordens cadastradas.</p>
+  <% end %>
+</div>

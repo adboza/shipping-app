@@ -1,0 +1,15 @@
+pt-BR:  
+  activerecord:
+    models:
+      service_order: 
+        one: 'Ordem de Serviço'
+        other: 'Ordens de Serviço'           
+    attributes:
+      service_order:
+        tracking_code: 'Código de rastreio'
+        departure_address: 'Endereço de partida'
+        delivery_address: 'Endereço de entrega'
+        comments: 'Observações de entrega'
+        shipping_distance: 'Distância da entrega'
+        goods_weight: 'Peso da mercadoria'
+        

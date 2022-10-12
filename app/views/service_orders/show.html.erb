@@ -1,0 +1,20 @@
+<h2><%= ServiceOrder.model_name.human %> <%= @service_order.tracking_code%></h2>
+
+<section id="service_orders" class="container-fluid">
+  <dl>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:tracking_code) %>:</strong> <%= @service_order.tracking_code %> </dt>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:departure_address) %>:</strong> <%= @service_order.departure_address %> </dt>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:delivery_address) %>:</strong> <%= @service_order.delivery_address %> </dt>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:shipping_distance) %>:</strong> <%= number_to_human(@service_order.shipping_distance, units: :distance) %> </dt>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:goods_weight) %>:</strong> <%= @service_order.goods_weight %> kg</dt>
+    <dd><%= ServiceOrder.human_attribute_name(:comments) %>: <%= @service_order.comments %></dd> 
+  </dl>
+</section>
+
+<div>
+  <% if current_user.user_access == 'admin_user' %>
+    <%= link_to 'Editar ordem de serviço', edit_service_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
+  <% end %>
+</div>
+
+<div><%= link_to t(:back_function), root_path, class:"btn btn-warning navbar-brand" %></div>

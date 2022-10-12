@@ -83,17 +83,6 @@ RSpec.describe Vehicle, type: :model do
         #Assert
         expect(result).to eq false
       end
-      
-      # it 'false when load weight is less than zero' do
-      #   #Arrange
-      #   modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: 4)
-      #   load = LoadCategory.new(min_weight: -2, max_weight: 4, weight_price: 1, delivery_modality_id: modality.id)
-      #   #Act
-      #   result = load.valid?
-      #   #Assert
-      #   expect(result).to eq false
-      # end
-
     end
   end
 end

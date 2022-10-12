@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 # Users
 User.create!(name:'Admin', email:'admin@sistemadefrete.com.br', password:'password', user_access: :admin_user)
 User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'password', user_access: :regular_user)
@@ -73,3 +66,11 @@ monark3 = Vehicle.create!(licence_plate: 'BIC0003', status: :available, year: 1.
 #
 van1 = Vehicle.create!(licence_plate: 'BES0001', status: :available, year: 1.year.ago, vehicle_type: utilitario, model: 'Best-A', load_capacity: 1500)
 van2 = Vehicle.create!(licence_plate: 'BES0002', status: :available, year: 1.year.ago, vehicle_type: utilitario, model: 'Best-A', load_capacity: 1500)
+#
+#
+# ServiceOrders
+encomenda_cris = ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )
+#
+encomenda_rute = ServiceOrder.create!(departure_address: 'Rua Pérola, 100 Curitiba - PR', delivery_address: 'Rua Francisco Derosso, 300 Curitiba - PR', comments: 'Falar com Rute', shipping_distance: 800, goods_weight: 12 )
+#
+encomenda_diomira = ServiceOrder.create!(departure_address: 'Rua Cascavel, 100 Curitiba - PR', delivery_address: 'Rua Marechal Floriano Peixoto, 12300 Curitiba - PR', comments: 'Falar com Diomira', shipping_distance: 2800, goods_weight: 3 )

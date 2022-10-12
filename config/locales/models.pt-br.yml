@@ -13,3 +13,6 @@ pt-BR:
   utility_vehicle: 'Veículo utilitário'
   car: 'Carro'
   vehicle_type: 'Tipo de veículo'
+  found:
+    one: 'encontrada'
+    other: 'encontradas'

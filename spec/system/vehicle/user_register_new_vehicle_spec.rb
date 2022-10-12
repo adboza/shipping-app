@@ -45,44 +45,4 @@ describe 'Usuário cadastra um veículo' do
     expect(page).to have_content 'Capacidade máxima de carga: 300'
     expect(page).to have_content 'Ano: 2022'
   end
-
-  # it 'com falha' do
-  #   #Arrange
-  #   user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
-  #   car = VehicleType.create!(vehicle_type: :car)
-  #   utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-  #   login_as(user)
-  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, model: 'Fusca', load_capacity: 300)
-  #   #Act
-  #   visit root_path
-  #   click_on 'Modalidades de Entrega'
-  #   click_on 'Cadastrar Modalidade'
-    
-  #   fill_in('Nome modalidade', with: 'Ecológica')
-  #   fill_in 'Taxa inicial', with: ''
-    
-  #   click_on 'Salvar'
-  #   #Assert
-  #   expect(page).to have_content 'Não foi possível cadastrar a modalidade'
-  #   expect(page).to have_content 'Verifique os erros abaixo:'
-  #   expect(page).to have_content 'Nome modalidade já está em uso'
-  #   expect(page).to have_content 'Taxa inicial não pode ficar em branco'
-  #   expect(current_path).to eq delivery_modalities_path
-  # end
-
-  # it 'e não é usuário administrador' do
-  #   #Arrange
-  #   user = User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
-  #   login_as(user)
-  #   car = VehicleType.create!(vehicle_type: :car)
-  #   utility = VehicleType.create!(vehicle_type: :utility_vehicle)
-  #   Vehicle.create!(licence_plate: ABC1100, status: :unavailable, year: 2022, vehicle_type: car, model: 'Fusca', load_capacity: 300)
-  #   Vehicle.create!(licence_plate: CDE1000, status: :available, year: 2021, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
- 
-  #   #Act
-  #   visit root_path
-  #   click_on 'Modalidades de Entrega'
-  #   #Assert    
-  #   expect(page).not_to have_content 'Cadastrar Modalidade'    
-  # end
 end
