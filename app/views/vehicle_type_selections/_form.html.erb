@@ -1,0 +1,17 @@
+
+<div class="container-fluid mb-3">
+  <%= form_with(model: @vehicle_type_selection) do |f| %>
+    <div>   
+      <%= f.label :delivery_modality_id, class:"form-label" %>: 
+      <%= f.collection_select :delivery_modality_id, @delivery_modalities, :id, :mod_name, class:"form-control" %>
+    </div>
+    <div>   
+      <%= f.label :vehicle_type_id, class:"form-label" %>: 
+      <%= f.collection_select :vehicle_type_id, @vehicle_types, :id, :vehicle_type, class:"form-control" %>
+    </div>
+    
+    <div>
+      <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>
+    </div>
+  <%end%>
+</div>

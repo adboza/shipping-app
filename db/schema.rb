@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_144123) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_213051) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -64,6 +64,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_144123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicle_type_selections", force: :cascade do |t|
+    t.integer "delivery_modality_id", null: false
+    t.integer "vehicle_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_modality_id"], name: "index_vehicle_type_selections_on_delivery_modality_id"
+    t.index ["vehicle_type_id"], name: "index_vehicle_type_selections_on_vehicle_type_id"
+  end
+
   create_table "vehicle_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,5 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_144123) do
 
   add_foreign_key "distance_categories", "delivery_modalities"
   add_foreign_key "load_categories", "delivery_modalities"
+  add_foreign_key "vehicle_type_selections", "delivery_modalities"
+  add_foreign_key "vehicle_type_selections", "vehicle_types"
   add_foreign_key "vehicles", "vehicle_types"
 end

@@ -13,10 +13,10 @@
         <div class="card-body">
           <dl>        
               <dt class="card-title"><%= ServiceOrder.human_attribute_name(:tracking_code) %>: <%= order.tracking_code %> </dt>
-              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:departure_address) %>: <%= order.departure_address %> </dt>
-              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:delivery_address) %>: <%= order.delivery_address %> </dt>
-              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:shipping_distance) %>: <%= number_to_human(order.shipping_distance, units: :distance) %> </dt>
-              <dt class="card-title"><%= ServiceOrder.human_attribute_name(:goods_weight) %>: <%= order.goods_weight %> kg</dt>
+              <dd cclass="card-text"><%= ServiceOrder.human_attribute_name(:departure_address) %>: <%= order.departure_address %> </dd>
+              <dd class="card-text"><%= ServiceOrder.human_attribute_name(:delivery_address) %>: <%= order.delivery_address %> </dd>
+              <dd class="card-text"><%= ServiceOrder.human_attribute_name(:shipping_distance) %>: <%= number_to_human(order.shipping_distance, units: :distance) %> </dd>
+              <dd class="card-text"><%= ServiceOrder.human_attribute_name(:goods_weight) %>: <%= order.goods_weight %> kg</dd>
               <dd  class="card-text"><%= ServiceOrder.human_attribute_name(:comments) %>: <%= order.comments %></dd>       
           </dl>
           <%= link_to "Detalhes - #{order.tracking_code}", order, type:"button", class:"btn btn-warning"%>

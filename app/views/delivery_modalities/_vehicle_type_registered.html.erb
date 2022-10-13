@@ -1,0 +1,21 @@
+<section id="vehicle_type_selections" class="container-fluid">
+  <h3>Categorias de Veículo por Modalidades </h3>  
+  <% if @vehicle_type_selections.any? %>
+    <table class="table">      
+        <tr class="table-secondary">
+          <th scope="col">Tipo de Veículo</th>
+          <th scope="col">Modalidade</th>
+        </tr>
+        <% @vehicle_type_selections.each do |vehicle| %>      
+          <tr>
+            <td><%= t(vehicle.vehicle_type.vehicle_type) %></td>
+            <td> <%= vehicle.delivery_modality.mod_name %></td>
+          </tr>
+          
+        <% end %>
+    </table>
+  <% else %>
+    <p>Não categorias de veículos cadastradas.</p>
+    
+  <% end %>
+</section>

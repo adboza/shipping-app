@@ -10,7 +10,7 @@
     </div>
     <div>
       <%= f.label :year, class:"form-label" %>:
-      <%= f.date_field :year, class:"form-control", placeholder:"AAAA" %>
+      <%= f.date_field :year, class:"form-control" %>
     </div>
     <div>
       <%= f.label :status, class:"form-label" %>: <%= f.select :status, [[t(:unavailable), :unavailable] , [t(:on_delivery), :on_delivery] , [t(:available), :available] ] %>      
@@ -20,8 +20,8 @@
       <%= f.number_field :load_capacity, class:"form-control", placeholder:"kg" %>
     </div>
     <div>   
-      <%= f.label :vehicle_type_id %>: 
-      <%= f.collection_select :vehicle_type_id, @vehicle_types, :id, :vehicle_type %>
+      <%= f.label :vehicle_type_id , class:"form-label" %>: 
+      <%= f.collection_select :vehicle_type_id, @vehicle_types, :id, :vehicle_type, class:"form-control" %>
     <div>
     <div>
       <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>

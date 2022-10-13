@@ -21,4 +21,10 @@
 <%= link_to 'Cadastrar Preços por Distância', new_delivery_modality_distance_category_path(@delivery_modality), class:"btn btn-warning navbar-brand" %>
 <% end %>
 </div><br>
+<%= render 'vehicle_type_registered' %>
+<div>
+<% if current_user.user_access == 'admin_user' %>
+<%= link_to 'Cadastrar Categorias de Veículos', new_vehicle_type_selection_path, class:"btn btn-warning navbar-brand" %>
+<% end %>
+</div><br>
 <div><%= link_to t(:back_function), root_path, class:"btn btn-warning navbar-brand" %></div>

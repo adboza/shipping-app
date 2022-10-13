@@ -6,6 +6,7 @@ class DeliveryModalitiesController < ApplicationController
   def index
     @delivery_modalities = DeliveryModality.all
     @load_categories = LoadCategory.all
+    @vehicle_type_selections = VehicleTypeSelection.all
     @distance_categories = DistanceCategory.all
   end
 
@@ -24,6 +25,7 @@ class DeliveryModalitiesController < ApplicationController
   end
 
   def show
+    @vehicle_type_selections = VehicleTypeSelection.where(delivery_modality_id: @delivery_modality.id)
     @load_categories = LoadCategory.where(delivery_modality_id: @delivery_modality.id)
     @distance_categories = DistanceCategory.where(delivery_modality_id: @delivery_modality.id)
   end

@@ -7,6 +7,9 @@ pt-BR:
       vehicle_type: 
         one: 'Tipo de veículo'
         other: 'Tipo de veículos'
+      vehicle_type_selection: 
+        one: 'Categoria de Veículo por Modalidade'
+        other: 'Categorias de Veículo por Modalidade'
     attributes:
       vehicle:
         year: 'Ano'
@@ -30,5 +33,22 @@ pt-BR:
         bicycle: 'Bicicleta'
         utility_vehicle: 'Veículo utilitário'
         car: 'Carro'
+      vehicle_type_selection:
+        year: 'Ano'
+        vehicle_type_id: 'Tipo de veículo'
+        licence_plate: 'Placa'
+        delivery_time: 'Prazo de entrega'
+        unavailable: 'Indisponível'
+        on_delivery: 'Em rota de entrega'
+        available: 'Disponível'
+        load_capacity: 'Capacidade máxima de carga'
+        model: 'Modelo'
+        vehicle_type: 'Tipo de veículo'
+        vehicle_type_id: 'Tipo de veículo'
+        motorcycle: 'Moto'
+        bicycle: 'Bicicleta'
+        utility_vehicle: 'Veículo utilitário'
+        car: 'Carro'
+        delivery_modality_id: 'Modalidade'
         
     
