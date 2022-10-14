@@ -6,8 +6,9 @@ class ServiceOrder < ApplicationRecord
   validates :shipping_distance, :goods_weight, numericality: true
   validates :goods_weight, numericality: {greater_than_or_equal_to: 0}
   validates :tracking_code, uniqueness: true
-  #rder = ServiceOrder.new(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: '' )
-
+  
+  has_one :shipping_order
+  
   private
 
   def generate_tracking_code

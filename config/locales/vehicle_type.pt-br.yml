@@ -27,8 +27,18 @@ pt-BR:
         bicycle: 'Bicicleta'
         utility_vehicle: 'Veículo utilitário'
         car: 'Carro'
+      vehicle_type/vehicle_type:
+        motorcycle: 'Moto'
+        bicycle: 'Bicicleta'
+        utility_vehicle: 'Veículo utilitário'
+        car: 'Carro'
       vehicle_type:
         vehicle_type: 'Tipo de veículo'
+        motorcycle: 'Moto'
+        bicycle: 'Bicicleta'
+        utility_vehicle: 'Veículo utilitário'
+        car: 'Carro'
+      vehicle_type/vehicle_type:
         motorcycle: 'Moto'
         bicycle: 'Bicicleta'
         utility_vehicle: 'Veículo utilitário'
@@ -43,12 +53,14 @@ pt-BR:
         available: 'Disponível'
         load_capacity: 'Capacidade máxima de carga'
         model: 'Modelo'
+        delivery_modality_id: 'Modalidade'
         vehicle_type: 'Tipo de veículo'
         vehicle_type_id: 'Tipo de veículo'
+      vehicle_types:
         motorcycle: 'Moto'
         bicycle: 'Bicicleta'
         utility_vehicle: 'Veículo utilitário'
         car: 'Carro'
-        delivery_modality_id: 'Modalidade'
+        
         
     

@@ -74,3 +74,17 @@ encomenda_cris = ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Cu
 encomenda_rute = ServiceOrder.create!(departure_address: 'Rua Pérola, 100 Curitiba - PR', delivery_address: 'Rua Francisco Derosso, 300 Curitiba - PR', comments: 'Falar com Rute', shipping_distance: 800, goods_weight: 12 )
 #
 encomenda_diomira = ServiceOrder.create!(departure_address: 'Rua Cascavel, 100 Curitiba - PR', delivery_address: 'Rua Marechal Floriano Peixoto, 12300 Curitiba - PR', comments: 'Falar com Diomira', shipping_distance: 2800, goods_weight: 3 )
+#
+#
+# VehicleTypeSelections
+ex_utilitario = VehicleTypeSelection.create!(vehicle_type: utilitario, delivery_modality: expressa)
+ex_carro = VehicleTypeSelection.create!(vehicle_type: carro, delivery_modality: expressa)
+ex_moto = VehicleTypeSelection.create!(vehicle_type: moto, delivery_modality: expressa)
+ex_bicicleta = VehicleTypeSelection.create!(vehicle_type: bicicleta, delivery_modality: expressa)
+#
+eco_bicicleta = VehicleTypeSelection.create!(vehicle_type: bicicleta, delivery_modality: ecologica)
+#
+p_utilitario = VehicleTypeSelection.create!(vehicle_type: utilitario, delivery_modality: padrao)
+p_carro = VehicleTypeSelection.create!(vehicle_type: carro, delivery_modality: padrao)
+p_moto = VehicleTypeSelection.create!(vehicle_type: moto, delivery_modality: padrao)
+
