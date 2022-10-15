@@ -13,7 +13,7 @@
       <%= f.date_field :year, class:"form-control" %>
     </div>
     <div>
-      <%= f.label :status, class:"form-label" %>: <%= f.select :status, [[t(:unavailable), :unavailable] , [t(:on_delivery), :on_delivery] , [t(:available), :available] ] %>      
+      <%= f.label :status, class:"form-label" %>: <%= f.select :status, [[t(:unavailable), :unavailable] , [t(:on_delivery), :on_delivery] , [t(:available), :available] ] , class:"form-control"%>      
     </div>
     <div>
       <%= f.label :load_capacity, class:"form-label" %>:

@@ -1,0 +1,18 @@
+pt-BR:  
+  activerecord:
+    models:
+      shipping_order: 
+        one: 'Ordem de entrega'
+        other: 'Ordens de entrega'
+    attributes:
+      shipping_order:
+        modality_name: 'Modalidade'
+        modality_price: 'Taxa inicial da modalidade'
+        load_km_price: 'Preço por km para categoria de peso'
+        delivery_time: 'Prazo de entrega'
+        distance_km_price: 'Preço por km para categoria de distância'
+        budget: 'Total para orçamento'
+        vehicle: 'Veículo'
+        estim_delivery_date: 'Data e hora estimada de entrega'
+        budget_index: 'Selecione forma de entrega'
+    

@@ -1,0 +1,31 @@
+
+<div class="container-fluid mb-3">
+  <div class="container-fluid mb-3">
+    <h4>Orçamentos disponíveis para ordem de serviço</h4>
+    <hr>
+    <% @shipping_order.prices_budget(@service_order).each do |hash| %>
+    <dl>
+      <dt><strong><%= hash[:budget_index] %> - <%= ShippingOrder.human_attribute_name(:modality_name) %>:</strong> <%= hash[:modality_name] %></dt>
+        <dd><strong><%= ShippingOrder.human_attribute_name(:modality_price) %>:</strong> <%= number_to_currency(hash[:modality_price]) %></dd>
+        <dd><strong><%= ShippingOrder.human_attribute_name(:load_km_price) %>:</strong> <%= number_to_currency(hash[:load_km_price]) %></dd>
+        <dd><strong><%= ShippingOrder.human_attribute_name(:distance_km_price) %>:</strong> <%= number_to_currency(hash[:distance_km_price]) %></dd>
+        <dd><strong><%= ShippingOrder.human_attribute_name(:delivery_time) %>:</strong> <%= hash[:delivery_time] %>h</dd>
+      <dt><strong><%= ShippingOrder.human_attribute_name(:budget) %>:</strong> <%= number_to_currency(hash[:budget]) %></dt>
+    </dl>
+    <hr>    
+    <% end %>
+  </div>
+  <%= form_with(model: [@service_order, @shipping_order]) do |f| %>    
+      <% select_array = [] %> 
+      <% @shipping_order.prices_budget(@service_order).each { |h| select_array << ["#{h[:budget_index]} - #{h[:modality_name]} - #{number_to_currency(h[:budget])}", h[:budget_index]] }%>
+    <div id="select_array">
+      
+      <%= f.label ShippingOrder.human_attribute_name(:budget_index), class:"form-label" %>: <%= f.select :budget_index, select_array , class:"form-control"%>      
+    </div>
+    <div>
+    
+    <div>
+      <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>
+    </div>
+  <%end%>
+</div>

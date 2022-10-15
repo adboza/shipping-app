@@ -35,17 +35,17 @@ d4_ecologica = DistanceCategory.create!(min_distance: 5000, max_distance: 7000, 
 #
 #
 # LoadCategories
-l1_expressa = LoadCategory.create!(min_weight: 1, max_weight: 5, weight_price: 0.8, delivery_modality: expressa)
+l1_expressa = LoadCategory.create!(min_weight: 0, max_weight: 5, weight_price: 0.8, delivery_modality: expressa)
 l2_expressa = LoadCategory.create!(min_weight: 6, max_weight: 9, weight_price: 0.9, delivery_modality: expressa)
 l3_expressa = LoadCategory.create!(min_weight: 10, max_weight: 29, weight_price: 0.95, delivery_modality: expressa)
 l4_expressa = LoadCategory.create!(min_weight: 30, max_weight: 50, weight_price: 1.1, delivery_modality: expressa)
 #
-l1_padrao = LoadCategory.create!(min_weight: 1, max_weight: 5, weight_price: 0.2, delivery_modality: padrao)
+l1_padrao = LoadCategory.create!(min_weight: 0, max_weight: 5, weight_price: 0.2, delivery_modality: padrao)
 l2_padrao = LoadCategory.create!(min_weight: 6, max_weight: 20, weight_price: 0.3, delivery_modality: padrao)
 l3_padrao = LoadCategory.create!(min_weight: 21, max_weight: 30, weight_price: 0.4, delivery_modality: padrao)
 l3_padrao = LoadCategory.create!(min_weight: 31, max_weight: 50, weight_price: 0.5, delivery_modality: padrao)
 #
-l1_ecologica = LoadCategory.create!(min_weight: 1, max_weight: 2, weight_price: 1, delivery_modality: ecologica)
+l1_ecologica = LoadCategory.create!(min_weight: 0, max_weight: 2, weight_price: 1, delivery_modality: ecologica)
 l2_ecologica = LoadCategory.create!(min_weight: 3, max_weight: 4, weight_price: 1.5, delivery_modality: ecologica)
 l3_ecologica = LoadCategory.create!(min_weight: 5, max_weight: 7, weight_price: 2, delivery_modality: ecologica)
 l4_ecologica = LoadCategory.create!(min_weight: 8, max_weight: 9, weight_price: 3, delivery_modality: ecologica)

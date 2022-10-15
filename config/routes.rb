@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :service_orders, only: [:index, :new, :show, :create, :edit, :update] do
     get 'search', on: :collection
+    resources :shipping_orders, only: [:new, :create]    
   end
 
 end
