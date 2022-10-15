@@ -1,5 +1,6 @@
 class Vehicle < ApplicationRecord
   belongs_to :vehicle_type
+  has_many :delivery_modalities, through: :vehicle_type_selection
   validates :licence_plate, :status, :year, :load_capacity, :vehicle_type_id , :model, presence: true
   validates :load_capacity, numericality: {greater_than_or_equal_to: 0}
   validates :load_capacity, numericality: true

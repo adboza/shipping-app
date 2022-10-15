@@ -14,5 +14,8 @@ pt-BR:
         budget: 'Total para orçamento'
         vehicle: 'Veículo'
         estim_delivery_date: 'Data e hora estimada de entrega'
-        budget_index: 'Selecione forma de entrega'
+        delivery_modality_id: 'Selecione forma de entrega'
+        delivered: 'Enviada' 
+        late: 'Em atraso' 
+        canceled: 'Cancelada'
     

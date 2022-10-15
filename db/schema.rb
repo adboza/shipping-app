@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_14_122420) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_172712) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_122420) do
     t.integer "delivery_modality_id", null: false
     t.integer "service_order_id", null: false
     t.integer "vehicle_id", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "received_date"
     t.datetime "estim_delivery_date"
     t.string "late_comments"

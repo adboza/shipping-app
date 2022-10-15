@@ -67,14 +67,12 @@ describe 'Usuário inicializa ordens de entrega' do
     click_on 'Ordens de Serviço'
     click_on 'Detalhes - AB1234567890123'
     click_on 'Iniciar ordem de entrega'
-    within('#select_array') do
-    select '1 - Expressa - R$ 29,00', from: 'Selecione forma de entrega:'
-    #click_on 'Salvar'
-    end    
-    #Assert
-    
-    expect(page).to have_content 'Selecione forma de entrega:'
+    within '#select_array' do
+      find(:css, '.form-control').select('1 - Expressa(1) - R$ 29,00')
+    end
+    click_on 'Salvar'       
+    #Assert    
     expect(page).to have_content 'Código de rastreio: AB1234567890123'
-    expect(page).to have_content 'Iniciar ordem de entrega'
+    expect(page).to have_content 'Ordem de entrega inicializada com sucesso'
   end
 end

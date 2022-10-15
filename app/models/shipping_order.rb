@@ -7,25 +7,37 @@ class ShippingOrder < ApplicationRecord
   has_one :load_category, through: :delivery_modality
   has_one :distance_category, through: :delivery_modality
   
-  before_validation :prices_budget, on: :new
-  # before_validation :set_vehicle, calculate_estim_delivery_date on: :create
-  # create_table "shipping_orders", force: :cascade do |t|
-  #   t.integer "delivery_modality_id", null: false
-  #   t.integer "service_order_id", null: false
-  #   t.integer "vehicle_id", null: false
-  #   t.integer "status"
-  #   t.datetime "received_date"
-  #   t.datetime "estim_delivery_date"
-  #   t.string "late_comments"
-  #   t.integer "load_category_id", null: false
-  #   t.integer "distance_category_id", null: false
+  enum status: {delivered: 0, late: 5, canceled: 9}
+  before_validation :set_vehicle, on: :create
 
   def prices_budget(service_order)
     show_prices = all_avaiable_load_and_distance_categories(service_order)    
   end
+  def set_hidden_params(index_value, hashes_array)
+    set_this_hidden_params(index_value, hashes_array)    
+  end
   
 
   private
+
+  def set_vehicle
+    vehicle_types = VehicleTypeSelection.where(delivery_modality_id: self.delivery_modality_id)    
+    vehicle_types.each do |type|
+      vehicle = Vehicle.find_by(vehicle_type_id: type.vehicle_type_id, status: :available)
+      return self.vehicle_id = vehicle.id
+    end
+  end
+
+  def set_this_hidden_params(index_value, hashes_array)
+    hashes_array.each do |hash|
+      if hash[:delivery_modality_id] == index_value
+        self.load_category_id = hash[:load_category_id]
+        self.distance_category_id = hash[:distance_category_id]
+        calculate_estim_delivery_date(hash[:delivery_time])
+      end
+    end
+  end
+
   def available_delivery_modalities
     delivery_modalities = DeliveryModality.all
     available_modalities = []
@@ -44,17 +56,17 @@ class ShippingOrder < ApplicationRecord
     available_delivery_modalities.each do |modality_hash|  
       if modality_hash.has_key?(:delivery_modality_id)          
         load_categories = LoadCategory.all.where(delivery_modality_id: modality_hash[:delivery_modality_id])
-        load_categories.each do |range|          
+        load_categories.each do |range|
           if (range.min_weight..range.max_weight).include? shipping_weight
             load_category = {}
             load_category.replace(modality_hash)
             load_category[:load_category_id] = range.id
-            load_category[:load_km_price] = range.weight_price            
-            all_load_categories << load_category  
-          end          
-        end      
-      end      
-    end    
+            load_category[:load_km_price] = range.weight_price
+            all_load_categories << load_category
+          end
+        end
+      end
+    end
     all_load_categories
   end
 
@@ -88,5 +100,9 @@ class ShippingOrder < ApplicationRecord
   def calculate_budget_value(modality_price, distance, load_km_price, distance_km_price)    
     total_budget = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
     total_budget
+  end
+
+  def calculate_estim_delivery_date(delivery_time)
+    self.estim_delivery_date = Time.now+delivery_time
   end
 end

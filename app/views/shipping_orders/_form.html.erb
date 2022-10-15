@@ -17,10 +17,10 @@
   </div>
   <%= form_with(model: [@service_order, @shipping_order]) do |f| %>    
       <% select_array = [] %> 
-      <% @shipping_order.prices_budget(@service_order).each { |h| select_array << ["#{h[:budget_index]} - #{h[:modality_name]} - #{number_to_currency(h[:budget])}", h[:budget_index]] }%>
+      <% @shipping_order.prices_budget(@service_order).each { |h| select_array << ["#{h[:budget_index]} - #{h[:modality_name]}(#{h[:delivery_modality_id]}) - #{number_to_currency(h[:budget])}", h[:delivery_modality_id]] }%>
     <div id="select_array">
       
-      <%= f.label ShippingOrder.human_attribute_name(:budget_index), class:"form-label" %>: <%= f.select :budget_index, select_array , class:"form-control"%>      
+      <div class="form-label"><%= f.label ShippingOrder.human_attribute_name(:delivery_modality_id)%>:</div> <div class="form-control"><%= f.select :delivery_modality_id, select_array  %></div>      
     </div>
     <div>
     
