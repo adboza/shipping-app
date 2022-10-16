@@ -9,6 +9,10 @@ class ServiceOrder < ApplicationRecord
   
   has_one :shipping_order
   
+  def available?
+    shipping_order.nil? 
+  end
+
   private
 
   def generate_tracking_code

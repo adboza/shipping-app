@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_172712) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_142849) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -48,20 +48,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_172712) do
     t.integer "goods_weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shipping_order_id"
+    t.index ["shipping_order_id"], name: "index_service_orders_on_shipping_order_id"
   end
 
   create_table "shipping_orders", force: :cascade do |t|
     t.integer "delivery_modality_id", null: false
     t.integer "service_order_id", null: false
-    t.integer "vehicle_id", null: false
+    t.integer "vehicle_id"
     t.integer "status", default: 0
     t.datetime "received_date"
     t.datetime "estim_delivery_date"
     t.string "late_comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "load_category_id", null: false
-    t.integer "distance_category_id", null: false
+    t.integer "load_category_id"
+    t.integer "distance_category_id"
     t.index ["delivery_modality_id"], name: "index_shipping_orders_on_delivery_modality_id"
     t.index ["distance_category_id"], name: "index_shipping_orders_on_distance_category_id"
     t.index ["load_category_id"], name: "index_shipping_orders_on_load_category_id"
@@ -112,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_172712) do
 
   add_foreign_key "distance_categories", "delivery_modalities"
   add_foreign_key "load_categories", "delivery_modalities"
+  add_foreign_key "service_orders", "shipping_orders"
   add_foreign_key "shipping_orders", "delivery_modalities"
   add_foreign_key "shipping_orders", "distance_categories"
   add_foreign_key "shipping_orders", "load_categories"

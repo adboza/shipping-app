@@ -4,38 +4,42 @@ class ShippingOrder < ApplicationRecord
   belongs_to :vehicle
   has_one :delivery_modality
   has_one :vehicle
-  has_one :load_category, through: :delivery_modality
-  has_one :distance_category, through: :delivery_modality
+  belongs_to :load_category
+  belongs_to :distance_category
   
   enum status: {delivered: 0, late: 5, canceled: 9}
-  before_validation :set_vehicle, on: :create
+  after_create :set_this_hidden_params
 
   def prices_budget(service_order)
     show_prices = all_avaiable_load_and_distance_categories(service_order)    
   end
-  def set_hidden_params(index_value, hashes_array)
-    set_this_hidden_params(index_value, hashes_array)    
+
+  def set_hidden_params(delivery_modality_id, service_order)
+    set_this_hidden_params(delivery_modality_id, service_order)    
+  end  
+
+  def calculate_budget_value(modality_price, distance, load_km_price, distance_km_price)   
+    total_budget = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
+    total_budget
   end
-  
 
   private
 
-  def set_vehicle
-    vehicle_types = VehicleTypeSelection.where(delivery_modality_id: self.delivery_modality_id)    
+  def set_vehicle(delivery_modality_id)
+    vehicle_types = VehicleTypeSelection.where(delivery_modality_id: delivery_modality_id)    
     vehicle_types.each do |type|
       vehicle = Vehicle.find_by(vehicle_type_id: type.vehicle_type_id, status: :available)
       return self.vehicle_id = vehicle.id
     end
   end
 
-  def set_this_hidden_params(index_value, hashes_array)
-    hashes_array.each do |hash|
-      if hash[:delivery_modality_id] == index_value
-        self.load_category_id = hash[:load_category_id]
-        self.distance_category_id = hash[:distance_category_id]
-        calculate_estim_delivery_date(hash[:delivery_time])
-      end
-    end
+  def set_this_hidden_params()
+    load_category = LoadCategory.where(["min_weight <= ? and max_weight >= ? and delivery_modality_id = ?", self.service_order.goods_weight, self.service_order.goods_weight, self.delivery_modality_id])
+    self.load_category_id = load_category.first
+    distance_category = DistanceCategory.where(["min_distance <= ? and max_distance >= ? and delivery_modality_id = ?", self.service_order.shipping_distance, self.service_order.shipping_distance, self.delivery_modality_id])
+    self.distance_category_id = distance_category.first
+    set_vehicle(self.delivery_modality_id)
+    #calculate_estim_delivery_date(self.distance_category.delivery_time)     
   end
 
   def available_delivery_modalities
@@ -97,10 +101,6 @@ class ShippingOrder < ApplicationRecord
     all_load_and_distance_categories
   end
 
-  def calculate_budget_value(modality_price, distance, load_km_price, distance_km_price)    
-    total_budget = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
-    total_budget
-  end
 
   def calculate_estim_delivery_date(delivery_time)
     self.estim_delivery_date = Time.now+delivery_time
