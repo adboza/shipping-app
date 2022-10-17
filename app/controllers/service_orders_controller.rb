@@ -26,6 +26,7 @@ class ServiceOrdersController < ApplicationController
   end
 
   def show
+    
     @shipping_order = ShippingOrder.where(service_order_id: @service_order.id)
   end
 

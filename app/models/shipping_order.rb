@@ -2,22 +2,49 @@ class ShippingOrder < ApplicationRecord
   belongs_to :delivery_modality
   belongs_to :service_order
   belongs_to :vehicle
-  has_one :delivery_modality
-  has_one :vehicle
+  #has_one :delivery_modality
+  #has_one :vehicle
   belongs_to :load_category
   belongs_to :distance_category
   
   enum status: {delivered: 0, late: 5, canceled: 9}
-  after_create :set_this_hidden_params
+  #before_save :set_this_hidden_params
 
   def prices_budget(service_order)
     show_prices = all_avaiable_load_and_distance_categories(service_order)    
   end
 
-  def set_hidden_params(delivery_modality_id, service_order)
-    set_this_hidden_params(delivery_modality_id, service_order)    
-  end  
+  def delivery_modality_selection(service_order)
+    selection_hash = all_avaiable_load_and_distance_categories(service_order)
+    modality_ids_array = []
+    selection_hash.each do |h| 
+      modality_ids_array << h[:delivery_modality_id]      
+    end
+    modality_array = []
+    modality_ids_array.each do |id|
+      modality_array << DeliveryModality.find_by(id: id) 
+    end    
+    modality_array
+  end
 
+
+  def set_load_category(delivery_modality_id, service_order)
+    load_categories = LoadCategory.where(["min_weight <= ? and max_weight >= ? and delivery_modality_id = ?", service_order.goods_weight, service_order.goods_weight, delivery_modality_id])
+    load_category = load_categories.first
+    load_category_id = load_category.id
+  end
+
+  def set_distance_category(delivery_modality_id, service_order)
+    distance_categories = DistanceCategory.where(["min_distance <= ? and max_distance >= ? and delivery_modality_id = ?", service_order.shipping_distance, service_order.shipping_distance, delivery_modality_id])
+    distance_category = distance_categories.first
+    distance_category_id = distance_category.id
+  end
+  def set_vehicle(delivery_modality_id)
+    vehicle_type = VehicleTypeSelection.find_by(delivery_modality_id: delivery_modality_id)    
+    vehicle = Vehicle.find_by(vehicle_type_id: vehicle_type.vehicle_type_id, status: :available)
+    vehicle_id = vehicle_id
+  end
+ 
   def calculate_budget_value(modality_price, distance, load_km_price, distance_km_price)   
     total_budget = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
     total_budget
@@ -25,22 +52,7 @@ class ShippingOrder < ApplicationRecord
 
   private
 
-  def set_vehicle(delivery_modality_id)
-    vehicle_types = VehicleTypeSelection.where(delivery_modality_id: delivery_modality_id)    
-    vehicle_types.each do |type|
-      vehicle = Vehicle.find_by(vehicle_type_id: type.vehicle_type_id, status: :available)
-      return self.vehicle_id = vehicle.id
-    end
-  end
-
-  def set_this_hidden_params()
-    load_category = LoadCategory.where(["min_weight <= ? and max_weight >= ? and delivery_modality_id = ?", self.service_order.goods_weight, self.service_order.goods_weight, self.delivery_modality_id])
-    self.load_category_id = load_category.first
-    distance_category = DistanceCategory.where(["min_distance <= ? and max_distance >= ? and delivery_modality_id = ?", self.service_order.shipping_distance, self.service_order.shipping_distance, self.delivery_modality_id])
-    self.distance_category_id = distance_category.first
-    set_vehicle(self.delivery_modality_id)
-    #calculate_estim_delivery_date(self.distance_category.delivery_time)     
-  end
+  
 
   def available_delivery_modalities
     delivery_modalities = DeliveryModality.all
@@ -52,6 +64,8 @@ class ShippingOrder < ApplicationRecord
     
     available_modalities
   end
+
+  
 
   def all_avaiable_load_categories(service_order)
     available_delivery_modalities = available_delivery_modalities()
