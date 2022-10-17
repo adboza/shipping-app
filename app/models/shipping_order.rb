@@ -4,7 +4,7 @@ class ShippingOrder < ApplicationRecord
   belongs_to :vehicle, optional: true
 
   after_create :set_estimated_delivery_date, :set_vehicle
-  after_update :check_vehicle_status
+  after_update :check_vehicle_status, :check_service_order_status
 
   private
   def set_estimated_delivery_date()
@@ -25,6 +25,16 @@ class ShippingOrder < ApplicationRecord
     if self.received_date.nil? == false
       vehicle = self.vehicle
       vehicle.update(status: :available)
+    end
+  end
+  def check_service_order_status
+    service_order = self.service_order
+    if self.received_date.nil? == false      
+      service_order.update(status: :finished)
+    elsif self.estimated_delivery_date < Date.today
+      service_order.update(status: :late)
+    else
+      service_order.update(status: :delivered)
     end
   end
 

@@ -2,8 +2,8 @@ pt-BR:
   activerecord:
     models:
       shipping_order: 
-        one: 'Ordem de entrega'
-        other: 'Ordens de entrega'
+        one: 'Ordem de Entrega'
+        other: 'Ordens de Entrega'
     attributes:
       shipping_order:
         modality_name: 'Modalidade'
@@ -19,4 +19,11 @@ pt-BR:
         late: 'Em atraso' 
         canceled: 'Cancelada'
         mod_name: 'Modalidade'
+        received_date: 'Data de recebimento'
+        late_comments: 'Justificativa de atraso'
+        finished: 'Encerrada'
+        canceled: 'Cancelada'
+        pending: 'Entrega pendente'
+        
+        
     

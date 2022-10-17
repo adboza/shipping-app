@@ -6,6 +6,11 @@
     <dt><strong><%= ShippingOrder.human_attribute_name(:estimated_delivery_date) %>:</strong></dt><dd> <%= DateTime.parse(I18n.l(@shipping_order.estimated_delivery_date)).strftime("%d/%m/%Y") %> </dd>
     <dt><strong><%= ShippingOrder.human_attribute_name(:quotation) %>:</strong></dt><dd> <%= number_to_currency(@service_order.calculate_quotation_value(@shipping_order.quotation.delivery_modality.mod_price, @service_order.shipping_distance, @shipping_order.quotation.load_category.weight_price, @shipping_order.quotation.distance_category.distance_price)) %> </dd>
     <dt><strong><%= ShippingOrder.human_attribute_name(:vehicle) %>:</strong></dt><dd> <%= @shipping_order.vehicle.model %> - <%= @shipping_order.vehicle.licence_plate %> - <%= t(@shipping_order.vehicle.status) %></dd>
+
+    <% if @shipping_order.received_date.nil? == false %>
+    <dt><strong><%= ShippingOrder.human_attribute_name(:received_date) %>:</strong></dt><dd> <%= DateTime.parse(I18n.l(@shipping_order.received_date)).strftime("%d/%m/%Y") %> </dd>
+    <dt><strong><%= ShippingOrder.human_attribute_name(:late_comments) %>:</strong></dt><dd> <%= @shipping_order.late_comments %> </dd>
+    <% end %>
   </dl> 
     
     
@@ -17,4 +22,10 @@
       <% end %>
     </div>
   <% end %>
+<div>
+  <% if current_user.user_access == 'regular_user' %>
+    <%= link_to 'Editar ordem de entrega', edit_service_order_shipping_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
+  <% end %>
+</div>
+  
 </section>

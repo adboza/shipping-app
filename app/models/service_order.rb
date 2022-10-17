@@ -12,7 +12,7 @@ class ServiceOrder < ApplicationRecord
   
   #has_one :shipping_order
 
-  enum status: {pending: 0, delivered: 5, late: 7, canceled: 9}
+  enum status: {pending: 0, delivered: 3, late: 5, finished: 7, canceled: 9}
 
   after_create :create_quotations
 

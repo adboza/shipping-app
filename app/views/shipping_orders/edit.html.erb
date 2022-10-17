@@ -1,0 +1,17 @@
+<h2><%=t(:edit_function)%> <%= ShippingOrder.model_name.human %> - <%= @service_order.tracking_code%></h2>
+
+<div class="container-fluid mb-3">
+  <%= form_with(model: [@service_order, @shipping_order]) do |f| %>
+    
+    <div>
+      <%= f.label :received_date, class:"form-label" %>:
+      <%= f.date_field :received_date, class:"form-control" %>
+    </div>     
+    <div>
+      <%= f.label :late_comments, class:"form-label" %>:
+      <%= f.text_field :late_comments, class:"form-control" %>
+    </div>
+      <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand"%>
+    </div>
+  <%end%>
+</div>

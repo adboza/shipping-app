@@ -38,7 +38,7 @@ describe 'Usuário inicializa ordens de entrega' do
     click_on 'Detalhes - AB1234567890123'
     click_on 'Iniciar ordem de entrega'
     #Assert
-    expect(page).to have_content 'Nova Ordem de entrega'
+    expect(page).to have_content 'Nova Ordem de Entrega'
     expect(page).to have_content 'Modalidade: Expressa'
     expect(page).to have_content 'Orçamentos disponíveis para ordem de serviço'
     expect(page).to have_content 'Taxa inicial da modalidade: R$ 15,00'

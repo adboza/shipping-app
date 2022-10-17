@@ -50,8 +50,10 @@ describe 'Usuário edita uma Ordem de Serviço' do
     visit root_path
     click_on 'Ordens de Serviço'
     click_on 'Detalhes - AB1234567890123'
-    #Assert    
-    expect(page).not_to have_content 'Editar'    
+    #Assert
+    within '#admin_edit' do
+      expect(page).not_to have_content 'Editar'
+    end
   end
 
 end

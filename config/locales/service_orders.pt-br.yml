@@ -12,4 +12,8 @@ pt-BR:
         comments: 'Observações de entrega'
         shipping_distance: 'Distância da entrega'
         goods_weight: 'Peso da mercadoria'
-        
+        finished: 'Encerrada'
+        canceled: 'Cancelada'
+        pending: 'Entrega pendente'
+        delivered: 'Em rota de entrega' 
+      

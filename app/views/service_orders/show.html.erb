@@ -3,17 +3,18 @@
 <section id="service_order" class="container-fluid">
   <dl>
     <dt><strong><%= ServiceOrder.human_attribute_name(:tracking_code) %>:</strong> <%= @service_order.tracking_code %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:departure_address) %>:</strong> <%= @service_order.departure_address %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:delivery_address) %>:</strong> <%= @service_order.delivery_address %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:shipping_distance) %>:</strong> <%= number_to_human(@service_order.shipping_distance, units: :distance) %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:goods_weight) %>:</strong> <%= @service_order.goods_weight %> kg</dt>
-    <dd><%= ServiceOrder.human_attribute_name(:comments) %>: <%= @service_order.comments %></dd> 
+    <dt><strong><%= ServiceOrder.human_attribute_name(:departure_address) %>:</strong></dt><dd> <%= @service_order.departure_address %> </dd>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:delivery_address) %>:</strong> </dt><dd><%= @service_order.delivery_address %> </dd>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:shipping_distance) %>:</strong></dt><dd> <%= number_to_human(@service_order.shipping_distance, units: :distance) %> </dd>
+    <dt><strong><%= ServiceOrder.human_attribute_name(:goods_weight) %>:</strong></dt><dd> <%= @service_order.goods_weight %> kg</dd>
+    <dt><%= ServiceOrder.human_attribute_name(:comments) %>: </dt><dd><%= @service_order.comments %></dd> 
+    <dt><%= ServiceOrder.human_attribute_name(:status) %>: </dt><dd><%= t(@service_order.status) %></dd> 
   </dl>
 </section>
 
 <%= render 'shipping_order' %>
 
-<div>
+<div id="admin_edit">
   <% if current_user.user_access == 'admin_user' %>
     <%= link_to 'Editar ordem de serviço', edit_service_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
   <% end %>

@@ -15,9 +15,27 @@ class ShippingOrdersController < ApplicationController
       redirect_to @service_order, notice: 'Ordem de entrega inicializada com sucesso!' 
     else
       @service_order = ServiceOrder.find(params[:service_order_id])
-      flash.now[:notice] = 'Algo deu errado'
+      flash.now[:notice] = 'Não foi possível cadastrar a ordem de entrega!'
       render 'new'
-    end 
+    end     
+  end
+
+  def edit
+    @service_order = ServiceOrder.find(params[:service_order_id])
+    @shipping_order = ShippingOrder.find(params[:id])
+  end
+
+  def update
+    @service_order = ServiceOrder.find(params[:service_order_id])
+    @shipping_order = ShippingOrder.find(params[:id])
+    shipping_order_params = params.require(:shipping_order).permit(:late_comments, :received_date)
+    if @shipping_order.update(shipping_order_params)
+      redirect_to @service_order, notice: 'Ordem de entrega atualizada com sucesso!'
+    else    
+      flash.now[:notice] = 'Não foi possível atualizar a ordem de entrega'
+      render 'edit'
+    end
+
   end
 
   private
