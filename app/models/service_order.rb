@@ -23,6 +23,11 @@ class ServiceOrder < ApplicationRecord
     quotations.nil?      
   end
 
+  def calculate_quotation_value(modality_price, distance, load_km_price, distance_km_price)   
+    total_quotation = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
+    total_quotation
+  end
+
   private
 
   def generate_tracking_code
@@ -96,10 +101,7 @@ class ServiceOrder < ApplicationRecord
     all_load_and_distance_categories
   end
   
-  def calculate_quotation_value(modality_price, distance, load_km_price, distance_km_price)   
-    total_quotation = (modality_price+((distance/1000)*load_km_price)+((distance/1000)*distance_km_price))
-    total_quotation
-  end
+  
 
 
 end

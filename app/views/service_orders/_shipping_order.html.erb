@@ -1,0 +1,19 @@
+<section id="shipping_order" class="container-fluid">
+<h3>Ordem de entrega </h3>
+<% if @shipping_order.nil? == false %>
+  <dl>
+    <dt><strong><%= ShippingOrder.human_attribute_name(:mod_name) %>:</strong></dt><dd> <%= @shipping_order.quotation.delivery_modality.mod_name %> </dd>
+    <dt><strong><%= ShippingOrder.human_attribute_name(:estimated_delivery_date) %>:</strong></dt><dd> <%= @shipping_order.quotation.distance_category.delivery_time %>h </dd>
+    <dt><strong><%= ShippingOrder.human_attribute_name(:quotation) %>:</strong></dt><dd> <%= number_to_currency(@service_order.calculate_quotation_value(@shipping_order.quotation.delivery_modality.mod_price, @service_order.shipping_distance, @shipping_order.quotation.load_category.weight_price, @shipping_order.quotation.distance_category.distance_price)) %> </dd>
+  </dl> 
+    
+    
+  <% else %>
+    <p>Ordem de entrega não inicializada.</p>
+    <div>
+      <% if current_user.user_access == 'regular_user' %>
+        <%= link_to 'Iniciar ordem de entrega', new_service_order_shipping_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
+      <% end %>
+    </div>
+  <% end %>
+</section>
