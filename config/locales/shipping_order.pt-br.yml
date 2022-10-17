@@ -13,7 +13,7 @@ pt-BR:
         distance_km_price: 'Preço por km para categoria de distância'
         quotation: 'Orçamento'
         vehicle: 'Veículo'
-        estimated_delivery_date: 'Data e hora estimada de entrega'
+        estimated_delivery_date: 'Data de entrega'
         delivery_modality_id: 'Selecione forma de entrega'
         delivered: 'Enviada' 
         late: 'Em atraso' 

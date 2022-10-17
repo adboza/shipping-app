@@ -4,6 +4,7 @@ class ServiceOrdersController < ApplicationController
   before_action :set_service_order,only: [:show, :edit, :update]
   def index
     @service_orders = ServiceOrder.all
+    @shipping_orders = ShippingOrder.all
   end
   
   def new
@@ -27,10 +28,6 @@ class ServiceOrdersController < ApplicationController
 
   def show
     @shipping_order = ShippingOrder.find_by(service_order_id: @service_order.id)
-    #@quotation = Quotation.where(id: @shipping_order.quotation_id)
-    #@delivery_modality = DeliveryModality.where(id: @quotation.delivery_modality_id)
-    #@load_category = LoadCategory.where(id: @quotation.load_category_id)
-    #@distance_category = DistanceCategory.where(id: @quotation.distance_category_id)
   end
 
   def edit

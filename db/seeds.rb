@@ -87,4 +87,12 @@ eco_bicicleta = VehicleTypeSelection.create!(vehicle_type: bicicleta, delivery_m
 p_utilitario = VehicleTypeSelection.create!(vehicle_type: utilitario, delivery_modality: padrao)
 p_carro = VehicleTypeSelection.create!(vehicle_type: carro, delivery_modality: padrao)
 p_moto = VehicleTypeSelection.create!(vehicle_type: moto, delivery_modality: padrao)
-
+#
+#
+#Quotation
+orcamento_encomenda_cris = Quotation.create!(delivery_modality: expressa, load_category: l1_expressa, distance_category: d2_expressa, service_order: encomenda_cris)
+#
+#
+#ShippingOrder
+entrega_cris = ShippingOrder.create!(service_order: encomenda_cris, quotation: orcamento_encomenda_cris)
+entrega_cris.update(late_comments: nil)

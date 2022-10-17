@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_150718) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_173805) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -74,10 +74,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_150718) do
     t.integer "service_order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "vehicles_id"
+    t.integer "vehicle_id"
     t.index ["quotation_id"], name: "index_shipping_orders_on_quotation_id"
     t.index ["service_order_id"], name: "index_shipping_orders_on_service_order_id"
-    t.index ["vehicles_id"], name: "index_shipping_orders_on_vehicles_id"
+    t.index ["vehicle_id"], name: "index_shipping_orders_on_vehicle_id"
   end
 
   create_table "users", force: :cascade do |t|

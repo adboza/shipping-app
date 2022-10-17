@@ -14,6 +14,7 @@ describe 'Usuário vê detalhes da ordem de entrega' do
     encomenda = ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )
     orcamento = Quotation.create!(delivery_modality: expressa, load_category: l1_expressa, distance_category: d2_expressa, service_order: encomenda)
     entrega = ShippingOrder.create!(service_order: encomenda, quotation: orcamento)
+    entrega.update(late_comments: nil)
     
     #Act
     login_as(user)
@@ -29,6 +30,8 @@ describe 'Usuário vê detalhes da ordem de entrega' do
     expect(page).to have_content 'Peso da mercadoria: 2 kg'
     expect(page).to have_content 'Modalidade: Expressa'
     expect(page).to have_content 'Orçamento: R$ 29,00'
+    expect(page).to have_content 'Data de entrega:'
+    expect(page).to have_content 'Veículo: Fusca - ABC1102 - Em rota de entrega'
     expect(page).not_to have_content 'Ordem de entrega não inicializada'     
   end
   
