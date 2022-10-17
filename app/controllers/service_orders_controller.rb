@@ -27,7 +27,6 @@ class ServiceOrdersController < ApplicationController
 
   def show
     
-    @shipping_order = ShippingOrder.where(service_order_id: @service_order.id)
   end
 
   def edit

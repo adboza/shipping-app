@@ -7,7 +7,9 @@ class ServiceOrder < ApplicationRecord
   validates :goods_weight, numericality: {greater_than_or_equal_to: 0}
   validates :tracking_code, uniqueness: true
   
-  has_one :shipping_order
+  #has_one :shipping_order
+
+  enum status: {pending: 0, delivered: 5, late: 7, canceled: 9}
   
   def available?
     shipping_order.nil? 
