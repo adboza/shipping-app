@@ -13,14 +13,14 @@
       <dt><strong><%= ShippingOrder.human_attribute_name(:quotation) %>:</strong> <%= number_to_currency(hash[:quotation]) %></dt>
     </dl>
     <hr>    
-    
+    <% end %>
   </div>
   <%= form_with(model: [@service_order, @shipping_order]) do |f| %>    
       
     <div id="select_array">
       
       <div class="form-label"><%= f.label ShippingOrder.human_attribute_name(:delivery_modality_id)%>:</div> 
-      <div class="form-control"><%= f.collection_select(:quotation_id, @quotations, :id, "#{hash[:modality_name]} - #{number_to_currency(hash[:quotation])}")%></div> 
+      <div class="form-control"><%= f.collection_select(:quotation_id, @quotations, :id, :full_description)%></div> 
     </div>
     <div>
     
@@ -28,5 +28,5 @@
       <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>
     </div>
   <%end%>
-  <% end %>
+  
 </div>

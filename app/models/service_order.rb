@@ -6,6 +6,7 @@ class ServiceOrder < ApplicationRecord
   validates :shipping_distance, :goods_weight, numericality: true
   validates :goods_weight, numericality: {greater_than_or_equal_to: 0}
   validates :tracking_code, uniqueness: true
+  has_one :shipping_order
 
   has_many :quotations
   
