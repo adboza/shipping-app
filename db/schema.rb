@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_120347) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_150718) do
   create_table "delivery_modalities", force: :cascade do |t|
     t.string "mod_name"
     t.decimal "mod_price"
@@ -66,6 +66,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_120347) do
     t.index ["shipping_order_id"], name: "index_service_orders_on_shipping_order_id"
   end
 
+  create_table "shipping_orders", force: :cascade do |t|
+    t.datetime "received_date"
+    t.datetime "estimated_delivery_date"
+    t.string "late_comments"
+    t.integer "quotation_id", null: false
+    t.integer "service_order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "vehicles_id"
+    t.index ["quotation_id"], name: "index_shipping_orders_on_quotation_id"
+    t.index ["service_order_id"], name: "index_shipping_orders_on_service_order_id"
+    t.index ["vehicles_id"], name: "index_shipping_orders_on_vehicles_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,6 +128,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_120347) do
   add_foreign_key "quotations", "load_categories"
   add_foreign_key "quotations", "service_orders"
   add_foreign_key "service_orders", "quotations", column: "shipping_order_id"
+  add_foreign_key "shipping_orders", "quotations"
+  add_foreign_key "shipping_orders", "service_orders"
   add_foreign_key "vehicle_type_selections", "delivery_modalities"
   add_foreign_key "vehicle_type_selections", "vehicle_types"
   add_foreign_key "vehicles", "vehicle_types"
