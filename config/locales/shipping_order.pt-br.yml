@@ -11,7 +11,7 @@ pt-BR:
         load_km_price: 'Preço por km para categoria de peso'
         delivery_time: 'Prazo de entrega'
         distance_km_price: 'Preço por km para categoria de distância'
-        budget: 'Total para orçamento'
+        quotation: 'Total para orçamento'
         vehicle: 'Veículo'
         estim_delivery_date: 'Data e hora estimada de entrega'
         delivery_modality_id: 'Selecione forma de entrega'

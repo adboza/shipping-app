@@ -3,24 +3,24 @@
   <div class="container-fluid mb-3">
     <h4>Orçamentos disponíveis para ordem de serviço</h4>
     <hr>
-    <% @shipping_order.prices_budget(@service_order).each do |hash| %>
+    <% @service_order.prices_quotation.each do |hash| %>
     <dl>
-      <dt><strong><%= hash[:budget_index] %> - <%= ShippingOrder.human_attribute_name(:modality_name) %>:</strong> <%= hash[:modality_name] %></dt>
+      <dt><strong><%= hash[:quotation_index] %> - <%= ShippingOrder.human_attribute_name(:modality_name) %>:</strong> <%= hash[:modality_name] %></dt>
         <dd><strong><%= ShippingOrder.human_attribute_name(:modality_price) %>:</strong> <%= number_to_currency(hash[:modality_price]) %></dd>
         <dd><strong><%= ShippingOrder.human_attribute_name(:load_km_price) %>:</strong> <%= number_to_currency(hash[:load_km_price]) %></dd>
         <dd><strong><%= ShippingOrder.human_attribute_name(:distance_km_price) %>:</strong> <%= number_to_currency(hash[:distance_km_price]) %></dd>
         <dd><strong><%= ShippingOrder.human_attribute_name(:delivery_time) %>:</strong> <%= hash[:delivery_time] %>h</dd>
-      <dt><strong><%= ShippingOrder.human_attribute_name(:budget) %>:</strong> <%= number_to_currency(hash[:budget]) %></dt>
+      <dt><strong><%= ShippingOrder.human_attribute_name(:quotation) %>:</strong> <%= number_to_currency(hash[:quotation]) %></dt>
     </dl>
     <hr>    
-    <% end %>
+    
   </div>
   <%= form_with(model: [@service_order, @shipping_order]) do |f| %>    
-      <% select_array = [] %> 
-      <% @shipping_order.prices_budget(@service_order).each { |h| select_array << ["#{h[:budget_index]} - #{h[:modality_name]}(#{h[:delivery_modality_id]}) - #{number_to_currency(h[:budget])}", h[:delivery_modality_id]] }%>
+      
     <div id="select_array">
       
-      <div class="form-label"><%= f.label ShippingOrder.human_attribute_name(:delivery_modality_id)%>:</div> <div class="form-control"><%= f.select :delivery_modality_id, select_array  %></div>      
+      <div class="form-label"><%= f.label ShippingOrder.human_attribute_name(:delivery_modality_id)%>:</div> 
+      <div class="form-control"><%= f.collection_select(:quotation_id, @quotations, :id, "#{hash[:modality_name]} - #{number_to_currency(hash[:quotation])}")%></div> 
     </div>
     <div>
     
@@ -28,4 +28,5 @@
       <%= f.submit 'Salvar', class:"btn btn-warning navbar-brand" %>
     </div>
   <%end%>
+  <% end %>
 </div>
