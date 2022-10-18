@@ -3,6 +3,7 @@ pt-BR:
   canceled: 'Cancelado'
   delivered: 'Em rota de entrega'
   finished: 'Entregue'
+  late_finished: 'Entregue com atraso'
   send_function: 'Enviar'
   edit_function: 'Editar'
   back_function: 'Voltar'

@@ -8,8 +8,9 @@
     <dt><strong><%= ShippingOrder.human_attribute_name(:vehicle) %>:</strong></dt><dd> <%= @shipping_order.vehicle.model %> - <%= @shipping_order.vehicle.licence_plate %> - <%= t(@shipping_order.vehicle.status) %></dd>
 
     <% if @shipping_order.received_date.nil? == false %>
-    <dt><strong><%= ShippingOrder.human_attribute_name(:received_date) %>:</strong></dt><dd> <%= DateTime.parse(I18n.l(@shipping_order.received_date)).strftime("%d/%m/%Y") %> </dd>
-    <dt><strong><%= ShippingOrder.human_attribute_name(:late_comments) %>:</strong></dt><dd> <%= @shipping_order.late_comments %> </dd>
+      <dt><strong><%= ShippingOrder.human_attribute_name(:received_date) %>:</strong></dt><dd> <%= DateTime.parse(I18n.l(@shipping_order.received_date)).strftime("%d/%m/%Y") %> </dd>
+      <dt><strong><%= ShippingOrder.human_attribute_name(:late_comments) %>:</strong></dt><dd> <%= @shipping_order.late_comments %> </dd>
+      
     <% end %>
   </dl> 
   <div>
