@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :vehicles, only: [:index, :new, :create, :show, :edit, :update]
 
   resources :service_orders, only: [:index, :new, :show, :create, :edit, :update] do
+    get 'pending', on: :collection
     get 'search', on: :collection
     resources :shipping_orders, only: [:new, :create, :edit, :update]    
   end

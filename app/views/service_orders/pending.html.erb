@@ -1,0 +1,9 @@
+<h3>Ordens pendentes</h3>
+<hr>
+<% if @service_orders.any? %>
+<% @service_orders.each do |service_order|%>
+  <%= render service_order %>
+<% end %>
+<% else %>
+  <p>Não existem ordens pendentes.</p>
+<% end %>

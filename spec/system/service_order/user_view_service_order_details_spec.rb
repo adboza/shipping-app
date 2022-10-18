@@ -6,8 +6,7 @@ describe 'Usuário vê detalhes da ordem de serviço' do
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     allow(SecureRandom).to receive(:alphanumeric).with(15).and_return('AB1234567890123')
-    ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )
-    
+    ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )    
     #Act
     visit root_path
     click_on 'Ordens de Serviço'

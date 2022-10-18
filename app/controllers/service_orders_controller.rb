@@ -26,6 +26,10 @@ class ServiceOrdersController < ApplicationController
     @service_orders = ServiceOrder.where("tracking_code LIKE ?", "%#{@tracking_code}%")    
   end
 
+  def pending
+    @service_orders = ServiceOrder.where(status: :pending)    
+  end
+
   def show
     @shipping_order = ShippingOrder.find_by(service_order_id: @service_order.id)
   end

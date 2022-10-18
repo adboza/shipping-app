@@ -1,10 +1,13 @@
 <section id="service_order" class="container-fluid">
   <dl>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:tracking_code) %>:</strong> <%= service_order.tracking_code %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:departure_address) %>:</strong> <%= service_order.departure_address %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:delivery_address) %>:</strong> <%= service_order.delivery_address %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:shipping_distance) %>:</strong> <%= number_to_human(service_order.shipping_distance, units: :distance) %> </dt>
-    <dt><strong><%= ServiceOrder.human_attribute_name(:goods_weight) %>:</strong> <%= service_order.goods_weight %> kg</dt>
-    <dd><%= ServiceOrder.human_attribute_name(:comments) %>: <%= service_order.comments %></dd> 
+    <dd><strong><%= ServiceOrder.human_attribute_name(:tracking_code) %>:</strong> <%= link_to service_order.tracking_code, service_order %> </dd>
+    <dd><strong><%= ServiceOrder.human_attribute_name(:departure_address) %>:</strong> <%= service_order.departure_address %> </dd>
+    <dd><strong><%= ServiceOrder.human_attribute_name(:delivery_address) %>:</strong> <%= service_order.delivery_address %> </dd>
+    <dd><strong><%= ServiceOrder.human_attribute_name(:shipping_distance) %>:</strong> <%= number_to_human(service_order.shipping_distance, units: :distance) %> </dd>
+    <dd><strong><%= ServiceOrder.human_attribute_name(:goods_weight) %>:</strong> <%= service_order.goods_weight %> kg</dd>
+    <dd><strong><%= ServiceOrder.human_attribute_name(:comments) %>: </strong><%= service_order.comments %></dd> 
+    <dd><strong><%= ServiceOrder.human_attribute_name(:status) %>:</strong> <%= t(service_order.status) %> </dd>
   </dl>
+  <hr>
+
 </section>

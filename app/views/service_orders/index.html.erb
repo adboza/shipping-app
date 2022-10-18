@@ -2,7 +2,10 @@
   <h2 class="col" >Ordens de Serviço</h2>  
   <div class="col" >
   <% if current_user.user_access == 'admin_user' %>
-  <%= link_to 'Cadastrar Ordem de Serviço', new_service_order_path ,type:"button", class:"btn btn-warning navbar-brand"%>  
+  <%= link_to 'Cadastrar Ordem de Serviço', new_service_order_path ,type:"button", class:"btn btn-warning navbar-brand"%>  <%= link_to 'Ordens pendentes', pending_service_orders_path ,type:"button", class:"btn btn-warning navbar-brand"%> 
+  <% end %>
+  <% if current_user.user_access == 'regular_user' %>
+  <%= link_to 'Ordens pendentes', pending_service_orders_path ,type:"button", class:"btn btn-warning navbar-brand"%> 
   <% end %>
   </div>
 </div><br>

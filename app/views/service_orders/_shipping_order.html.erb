@@ -13,7 +13,7 @@
     <% end %>
   </dl> 
   <div>
-  <% if current_user.user_access == 'regular_user' %>
+  <% if current_user.nil? == false && current_user.user_access == 'regular_user' %>
     <%= link_to 'Editar ordem de entrega', edit_service_order_shipping_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
   <% end %>
   </div>
@@ -22,7 +22,7 @@
   <% else %>
     <p>Ordem de entrega não inicializada.</p>
     <div>
-      <% if current_user.user_access == 'regular_user' %>
+      <% if current_user.nil? == false && current_user.user_access == 'regular_user' %>
         <%= link_to 'Iniciar ordem de entrega', new_service_order_shipping_order_path(@service_order), class:"btn btn-warning navbar-brand"%> <br>
       <% end %>
     </div>
