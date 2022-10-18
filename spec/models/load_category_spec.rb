@@ -4,41 +4,39 @@ RSpec.describe LoadCategory, type: :model do
   describe '#valid?' do
     context 'presence' do
       it 'false when min_weight is empty' do
-        #Arrange
+        
         load = LoadCategory.new(min_weight: '', max_weight: 4, weight_price: 1)
-        #Act
+        
         result = load.valid?
-        #Assert
+       
         expect(result).to eq false
       end
       it 'false when max_weight is empty' do
-        #Arrange
+        
         load = LoadCategory.new(min_weight: 2, max_weight: '', weight_price: 1)
-        #Act
+        
         result = load.valid?
-        #Assert
+        
         expect(result).to eq false
       end
 
       it 'false when min weight is bigger than max weight' do
-        #Arrange
-        #Arrange
+        
         modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: 4)
         load = LoadCategory.new(min_weight: 7, max_weight: 4, weight_price: 1, delivery_modality_id: modality)
-        #Act
+        
         result = load.valid?
-        #Assert
+        
         expect(result).to eq false
       end
 
       it 'false when have non numeric field' do
-        #Arrange
-        #Arrange
+        
         modality = DeliveryModality.create!(mod_name: 'Expressa', mod_price: 4)
         load = LoadCategory.new(min_weight: 's', max_weight: 4, weight_price: 1, delivery_modality_id: modality)
-        #Act
+       
         result = load.valid?
-        #Assert
+        
         expect(result).to eq false
       end
 

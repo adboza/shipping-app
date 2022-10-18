@@ -8,14 +8,12 @@ describe 'Usuario edita veículos' do
     Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
     Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Veículos'
     click_on 'Detalhes - ABC1100'
     click_on 'Editar cadastro'
   
-    #Assert
     expect(page).to have_content 'Editar Veículo'
     expect(page).to have_content 'Placa:'
     expect(page).to have_content 'Ano:'
@@ -32,7 +30,6 @@ describe 'Usuario edita veículos' do
     Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
     Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Veículos'
@@ -41,7 +38,6 @@ describe 'Usuario edita veículos' do
     select 'Em rota de entrega', from: 'Status'
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Veículo atualizado com sucesso'
     expect(page).to have_content 'Status: Em rota de entrega'
   end
@@ -53,7 +49,6 @@ describe 'Usuario edita veículos' do
     Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
     Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Veículos'
@@ -62,11 +57,9 @@ describe 'Usuario edita veículos' do
     fill_in 'Capacidade máxima de carga', with: 1000
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Veículo atualizado com sucesso'
     expect(page).to have_content 'Capacidade máxima de carga: 1000kg'
-    expect(page).not_to have_content 'Capacidade máxima de carga: 3600kg'
-    
+    expect(page).not_to have_content 'Capacidade máxima de carga: 3600kg'    
   end
 
   it 'e edita placa com sucesso' do       
@@ -76,7 +69,6 @@ describe 'Usuario edita veículos' do
     Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
     Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'Fusca', load_capacity: 3600)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Veículos'
@@ -85,7 +77,6 @@ describe 'Usuario edita veículos' do
     fill_in 'Placa', with: 'CDF1000'
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Veículo atualizado com sucesso'
     expect(page).to have_content 'Placa: CDF1000'
     expect(page).not_to have_content 'CDE1000'
@@ -98,7 +89,6 @@ describe 'Usuario edita veículos' do
     Vehicle.create!(licence_plate: 'ABC1100', status: :unavailable, year: 2.days.ago, vehicle_type: car, model: 'Fusca', load_capacity: 300)
     Vehicle.create!(licence_plate: 'CDE1000', status: :available, year: 1.year.ago, vehicle_type: utility, model: 'BestA', load_capacity: 3600)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Veículos'
@@ -107,7 +97,6 @@ describe 'Usuario edita veículos' do
     fill_in 'Modelo', with: 'Kombi'
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Veículo atualizado com sucesso'
     expect(page).to have_content 'Modelo: Kombi'
     expect(page).not_to have_content 'BestA'

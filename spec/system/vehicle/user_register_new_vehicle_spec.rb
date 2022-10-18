@@ -2,16 +2,16 @@ require 'rails_helper'
 
 describe 'Usuário cadastra um veículo' do
   it 'a partir da tela inicial' do
-    #Arrange
+    
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
     login_as(user)
-    #Act
+    
     visit root_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
-    #Assert
+    
     expect(page).to have_content 'Status:'
     expect(page).to have_content 'Placa:'
     expect(page).to have_content 'Ano:'
@@ -20,16 +20,15 @@ describe 'Usuário cadastra um veículo' do
     expect(page).to have_content 'Tipo de veículo'
   end
   it 'com sucesso' do
-    #Arrange
+    
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     car = VehicleType.create!(vehicle_type: :car)
     utility = VehicleType.create!(vehicle_type: :utility_vehicle)
     login_as(user)
-    #Act
+    
     visit root_path
     click_on 'Veículos'
-    click_on 'Cadastrar Veículo'
-    
+    click_on 'Cadastrar Veículo'    
     fill_in 'Placa', with: 'ABC2500'
     fill_in 'Modelo', with: 'Fusca'
     select 'Em rota de entrega', from: 'Status'
@@ -37,7 +36,7 @@ describe 'Usuário cadastra um veículo' do
     fill_in 'Capacidade máxima de carga', with: 300
     select 'car', from: 'Tipo de veículo'
     click_on 'Salvar'
-    #Assert
+    
     expect(page).to have_content 'Veículo cadastrado com sucesso'
     expect(page).to have_content 'Tipo de veículo: Carro'
     expect(page).to have_content 'Placa: ABC2500'

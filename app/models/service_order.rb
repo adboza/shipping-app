@@ -7,10 +7,7 @@ class ServiceOrder < ApplicationRecord
   validates :goods_weight, numericality: {greater_than_or_equal_to: 0}
   validates :tracking_code, uniqueness: true
   has_one :shipping_order
-
   has_many :quotations
-  
-  #has_one :shipping_order
 
   enum status: {pending: 0, delivered: 3, late: 5, finished: 7, canceled: 9}
 
@@ -101,8 +98,4 @@ class ServiceOrder < ApplicationRecord
     end
     all_load_and_distance_categories
   end
-  
-  
-
-
 end

@@ -2,6 +2,7 @@ class ServiceOrdersController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create]
   before_action :check_user, only: [:new, :create, :update, :edit]
   before_action :set_service_order,only: [:show, :edit, :update]
+
   def index
     @service_orders = ServiceOrder.all
     @shipping_orders = ShippingOrder.all
@@ -57,5 +58,4 @@ class ServiceOrdersController < ApplicationController
   def set_service_order
     @service_order = ServiceOrder.find(params[:id])
   end
-
 end

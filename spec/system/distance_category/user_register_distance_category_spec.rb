@@ -2,12 +2,11 @@ require 'rails_helper'
 
 describe 'Usuário registra valores e distâncias da modalidade' do
   it 'a partir da tela inicial com sucesso' do
-    #Arrange
+    
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
     
-    #Act
     visit root_path
     click_on 'Modalidades de Entrega'
     click_on 'Expressa'
@@ -17,7 +16,7 @@ describe 'Usuário registra valores e distâncias da modalidade' do
     fill_in 'Preço por km', with: 0.5
     fill_in 'Prazo de entrega', with: 36
     click_on 'Salvar'
-    #Assert
+    
     expect(page).to have_content 'Preço por distância incluído'
     within('#distance_categories') do
       expect(page).to have_content '0km - 10km'

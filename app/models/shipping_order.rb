@@ -7,10 +7,12 @@ class ShippingOrder < ApplicationRecord
   after_update :check_vehicle_status, :check_service_order_status
 
   private
+
   def set_estimated_delivery_date()
     delivery_time = self.quotation.distance_category.delivery_time
     self.estimated_delivery_date = Time.now+(delivery_time*3600)
   end
+
   def set_vehicle()
     vehicles_type = VehicleTypeSelection.where(delivery_modality_id: self.quotation.delivery_modality_id)
     vehicles_type.each do |vehicle_type|
@@ -21,12 +23,14 @@ class ShippingOrder < ApplicationRecord
       end
     end
   end
+
   def check_vehicle_status
     if self.received_date.nil? == false
       vehicle = self.vehicle
       vehicle.update(status: :available)
     end
   end
+
   def check_service_order_status
     service_order = self.service_order
     if self.received_date.nil? == false      
@@ -37,5 +41,4 @@ class ShippingOrder < ApplicationRecord
       service_order.update(status: :delivered)
     end
   end
-
 end

@@ -1,5 +1,6 @@
 class ShippingOrdersController < ApplicationController
   before_action :check_regular_user, only: [:new, :create]
+
   def new
     @service_order = ServiceOrder.find(params[:service_order_id])
     @quotations = Quotation.where(service_order: @service_order)
@@ -9,8 +10,7 @@ class ShippingOrdersController < ApplicationController
   def create
     @service_order = ServiceOrder.find(params[:service_order_id])
     shipping_order_params = params.require(:shipping_order).permit(:quotation_id)
-    if @service_order.create_shipping_order!(shipping_order_params)
-    #if @shipping_order.save
+    if @service_order.create_shipping_order!(shipping_order_params)    
       @service_order.shipping_order.update(late_comments: nil)
       redirect_to @service_order, notice: 'Ordem de entrega inicializada com sucesso!' 
     else
@@ -35,7 +35,6 @@ class ShippingOrdersController < ApplicationController
       flash.now[:notice] = 'Não foi possível atualizar a ordem de entrega'
       render 'edit'
     end
-
   end
 
   private
@@ -45,7 +44,4 @@ class ShippingOrdersController < ApplicationController
       return redirect_to root_path 
     end
   end
-  
-  
-
 end

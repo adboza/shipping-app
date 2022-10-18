@@ -1,8 +1,6 @@
 class VehicleTypeSelectionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :check_user, only: [:new, :create]  
-  #before_action :set_modality, only: [:create]
-  #before_action :set_vehicle_type, only: [:create] 
+  before_action :check_user, only: [:new, :create]
   
   def new    
     @vehicle_types = VehicleType.all
@@ -20,11 +18,9 @@ class VehicleTypeSelectionsController < ApplicationController
       flash.now[:notice] = 'Não foi possível cadastrar a categoria de veículo para modalidade'
       render 'new'
     end
-  end
-  
+  end  
 
-  private
-  
+  private  
 
   def vehicle_type_selection_params    
     params.require(:vehicle_type_selection).permit(:vehicle_type_id, :delivery_modality_id)

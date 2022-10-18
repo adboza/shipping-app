@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Usuário vê detalhes da ordem de entrega' do
   it 'a partir da tela inicial pela ordem de serviço' do
-    #Arrange
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
     carro = VehicleType.create!(vehicle_type: :car)
     expressa = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
@@ -16,12 +15,11 @@ describe 'Usuário vê detalhes da ordem de entrega' do
     entrega = ShippingOrder.create!(service_order: encomenda, quotation: orcamento)
     entrega.update(late_comments: nil)
     
-    #Act
     login_as(user)
     visit root_path
     click_on 'Ordens de Serviço'
     click_on 'Detalhes - AB1234567890123'
-    #Assert
+    
     expect(page).to have_content 'Ordem de Serviço AB1234567890123'
     expect(page).to have_content 'Código de rastreio: AB1234567890123'
     expect(page).to have_content 'Endereço de partida: Av. Araucária, 100 Curitiba - PR'

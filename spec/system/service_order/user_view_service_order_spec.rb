@@ -43,7 +43,7 @@ describe 'Usuário vê ordens de serviço' do
     expect(page).to have_content 'Não existem ordens cadastradas'
   end
   it 'e exibe dados de ordens de entrega' do
-    #Arrange
+    
     user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     carro = VehicleType.create!(vehicle_type: :car)
     expressa = DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
@@ -56,11 +56,11 @@ describe 'Usuário vê ordens de serviço' do
     entrega = ShippingOrder.create!(service_order: encomenda, quotation: orcamento)
     entrega.update(late_comments: nil)
     entrega.save
-    #Act
+    
     login_as(user)
     visit root_path
     click_on 'Ordens de Serviço'
-    #Assert
+    
     within('main') do
       expect(page).to have_content 'Ordens de Serviço'
     end

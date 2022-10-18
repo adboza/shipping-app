@@ -41,7 +41,6 @@ class LoadCategoriesController < ApplicationController
     @load_category = LoadCategory.find(params[:id])
   end
   
-
   def load_category_params
     params.require(:load_category).permit(:min_weight, :max_weight, :weight_price, :delivery_modality_id)
   end

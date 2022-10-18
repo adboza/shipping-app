@@ -7,7 +7,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     DistanceCategory.create!(min_distance: 100, max_distance: 10000, distance_price: 0.5, delivery_modality: modality, delivery_time: 36)
     DistanceCategory.create!(min_distance: 11000, max_distance: 30000, distance_price: 0.8, delivery_modality: modality, delivery_time: 36)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Modalidades de Entrega'
@@ -15,7 +14,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     click_on '0km - 10km'
     click_on 'Editar cadastro'
   
-    #Assert
     expect(page).to have_content 'Distância mínima'
     expect(page).to have_content 'Distância máxima'
     expect(page).to have_content 'Prazo de entrega'
@@ -29,7 +27,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     DistanceCategory.create!(min_distance: 100, max_distance: 10000, distance_price: 0.5, delivery_modality: modality, delivery_time: 36)
     DistanceCategory.create!(min_distance: 11000, max_distance: 30000, distance_price: 0.8, delivery_modality: modality, delivery_time: 36)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Modalidades de Entrega'
@@ -39,7 +36,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     fill_in 'Distância máxima', with: 8000
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Preço por distância atualizado com sucesso'
     within('#distance_categories')do
       expect(page).to have_content '0km - 8km'
@@ -52,7 +48,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     DistanceCategory.create!(min_distance: 100, max_distance: 10000, distance_price: 0.5, delivery_modality: modality, delivery_time: 36)
     DistanceCategory.create!(min_distance: 11000, max_distance: 30000, distance_price: 0.8, delivery_modality: modality, delivery_time: 36)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Modalidades de Entrega'
@@ -62,7 +57,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     fill_in 'Preço por km', with: 0.75
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Preço por distância atualizado com sucesso'
     within('#distance_categories')do
       expect(page).to have_content 'R$ 0,75'
@@ -75,7 +69,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     DistanceCategory.create!(min_distance: 100, max_distance: 10000, distance_price: 0.5, delivery_modality: modality, delivery_time: 36)
     DistanceCategory.create!(min_distance: 11000, max_distance: 30000, distance_price: 0.8, delivery_modality: modality, delivery_time: 36)
 
-    #Act
     login_as(user)
     visit root_path
     click_on 'Modalidades de Entrega'
@@ -85,7 +78,6 @@ describe 'Usuario edita preços por distância dentro de modalidade de entrega' 
     fill_in 'Prazo de entrega', with: 34
     click_on 'Salvar'
 
-    #Assert
     expect(page).to have_content 'Preço por distância atualizado com sucesso'
     within('#distance_categories')do
       expect(page).to have_content '34h'
