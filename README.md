@@ -1,6 +1,13 @@
 # shipping-app
 Projeto de app para fretes: Campus Code - TreinaDev Delas!
 
+## Tabela de Conteúdos
+  * [Organizando ideias](#organizando-ideias)
+  * [Como rodar a aplicação](#como-rodar-a-aplicação)
+  * [Como rodar os testes](#como-rodar-os-testes)
+  * [Informações adicionais](#informações-adicionais)
+  * [Feedback do curso Treinadev](#feedback-do-curso-treinadev)
+
 ## Organizando ideias
 Backlog do projeto disponível em [Trello](https://trello.com/b/7cgxsT6M/sistema-de-fretes-campus-code-treinadev).
 
@@ -42,11 +49,6 @@ $ rails s
 
 * Acesse http://localhost:3000/
 
-## Como rodar os testes
-
-```
-$ rspec
-```
 
 ## Informações adicionais
 
@@ -58,7 +60,8 @@ $ rspec
 
 * Gems instaladas: bootstrap, capybara, devise, rspec
 
-## Feedback do curso Treinadev e contextualização do projeto
+## Feedback do curso Treinadev
+## e contextualização do projeto
 
 ### Este texto é uma carta à pessoa que acessará este projeto.
 
