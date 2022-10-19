@@ -4,7 +4,6 @@ Projeto de app para fretes: Campus Code - TreinaDev Delas!
 ## Tabela de Conteúdos
   * [Organizando ideias](#organizando-ideias)
   * [Como rodar a aplicação](#como-rodar-a-aplicação)
-  * [Como rodar os testes](#como-rodar-os-testes)
   * [Informações adicionais](#informações-adicionais)
   * [Feedback do curso Treinadev](#feedback-do-curso-treinadev)
 
