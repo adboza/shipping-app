@@ -5,5 +5,5 @@ class DeliveryModality < ApplicationRecord
   has_many :distance_categories
   has_many :vehicle_type_selection
   has_many :vehicle_types, through: :vehicle_type_selection
-
+  enum status: {active: 0, deactivated: 9}
 end

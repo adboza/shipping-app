@@ -8,3 +8,6 @@ pt-BR:
       delivery_modality:
         mod_name: 'Nome modalidade'
         mod_price: 'Taxa inicial'
+      delivery_modality/status:
+        active: 'Ativa' 
+        deactivated: 'Desativada'

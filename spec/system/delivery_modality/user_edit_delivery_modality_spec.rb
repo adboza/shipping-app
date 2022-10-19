@@ -27,6 +27,7 @@ describe 'Usuário edita uma Modalidade de Entrega' do
     click_on 'Editar'
     fill_in 'Nome modalidade', with:'Rápida'
     click_on 'Salvar'
+
     expect(page).to have_content 'Modalidade atualizada com sucesso'
     expect(page).to have_content 'Nome modalidade: Rápida'
     expect(page).not_to have_content 'Expressa'    
@@ -43,5 +44,22 @@ describe 'Usuário edita uma Modalidade de Entrega' do
     click_on 'Expressa'
      
     expect(page).not_to have_content 'Editar'    
+  end
+
+  it 'e altera status para desativada' do
+
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
+    DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
+
+    login_as(user) 
+    visit root_path    
+    click_on 'Modalidades de Entrega'
+    click_on 'Expressa'
+    click_on 'Editar'
+    select 'Desativada', from:'Status'
+    click_on 'Salvar'
+    
+    expect(page).to have_content 'Modalidade atualizada com sucesso'
+    expect(page).to have_content 'Status: Desativada'
   end
 end

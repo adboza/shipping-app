@@ -13,7 +13,8 @@
       <div class="card-body">
         <dl>        
             <dt class="card-title"><%= DeliveryModality.human_attribute_name(:mod_name) %>: <%=m.mod_name%> </dt>
-            <dd  class="card-text"><%= DeliveryModality.human_attribute_name(:mod_price) %>: <%= number_to_currency(m.mod_price) %></dd>        
+            <dd  class="card-text"><%= DeliveryModality.human_attribute_name(:mod_price) %>: <%= number_to_currency(m.mod_price) %></dd>
+            <dd  class="card-text"><%= DeliveryModality.human_attribute_name(:status) %>: <%= t(m.status) %></dd>   
         </dl>
         <%= link_to "Detalhes - #{m.mod_name}", m, type:"button", class:"btn btn-warning"%>
       </div>

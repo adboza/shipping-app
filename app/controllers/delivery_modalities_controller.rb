@@ -47,7 +47,7 @@ class DeliveryModalitiesController < ApplicationController
   end
   
   def delivery_modality_params
-    params.require(:delivery_modality).permit(:mod_name, :mod_price)
+    params.require(:delivery_modality).permit(:mod_name, :mod_price, :status)
   end
 
   def set_modality

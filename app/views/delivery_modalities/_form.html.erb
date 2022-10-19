@@ -5,6 +5,10 @@
       <%= f.text_field :mod_name, class:"form-control" %>
     </div>
     <div>
+      <%= f.label :status, class:"form-label" %>: 
+      <%= f.select :status, [[t(:active), :active] , [t(:deactivated), :deactivated]] , class:"form-control"%>  
+    </div>
+    <div>
       <%= f.label :mod_price, class:"form-label" %>:
       <%= f.number_field :mod_price, step: 0.01, class:"form-control" %>
     </div>

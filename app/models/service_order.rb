@@ -43,7 +43,7 @@ class ServiceOrder < ApplicationRecord
   end
 
   def available_delivery_modalities
-    delivery_modalities = DeliveryModality.all
+    delivery_modalities = DeliveryModality.all.where(status: :active)
     available_modalities = []    
       delivery_modalities.each do |modality|
         available_modalities << {delivery_modality_id: modality.id, modality_name: modality.mod_name, modality_price: modality.mod_price}

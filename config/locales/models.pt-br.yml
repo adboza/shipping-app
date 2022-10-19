@@ -1,4 +1,6 @@
 pt-BR:
+  active: 'Ativa' 
+  deactivated: 'Desativada'
   pending: 'Pendente'
   canceled: 'Cancelado'
   delivered: 'Em rota de entrega'
