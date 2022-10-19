@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário edita uma Ordem de Serviço' do
   it 'a partir da página de detalhes da Ordem de serviço' do
    
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     allow(SecureRandom).to receive(:alphanumeric).with(15).and_return('AB1234567890123')
     ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )
@@ -18,7 +18,7 @@ describe 'Usuário edita uma Ordem de Serviço' do
 
   it 'com sucesso' do
     
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     allow(SecureRandom).to receive(:alphanumeric).with(15).and_return('AB1234567890123')
     ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )
@@ -37,7 +37,7 @@ describe 'Usuário edita uma Ordem de Serviço' do
 
   it 'e não é usuário administrador' do
    
-    user = User.create!(name:'Edna', email:'edna@email.com', password:'123456', user_access: :regular_user)
+    user = User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
     login_as(user)    
     allow(SecureRandom).to receive(:alphanumeric).with(15).and_return('AB1234567890123')
     ServiceOrder.create!(departure_address: 'Av. Araucária, 100 Curitiba - PR', delivery_address: 'Av. Getúlio Vargas, 300 Curitiba - PR', comments: 'Falar com Cris', shipping_distance: 10000, goods_weight: 2 )

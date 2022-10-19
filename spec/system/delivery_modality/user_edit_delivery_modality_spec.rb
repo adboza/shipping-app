@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário edita uma Modalidade de Entrega' do
   it 'a partir da página de detalhes da modalidade' do
     
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
  
@@ -17,7 +17,7 @@ describe 'Usuário edita uma Modalidade de Entrega' do
 
   it 'com sucesso' do
     
-    user = User.create!(name:'Joao', email:'joao@email.com', password:'123456', user_access: :admin_user)
+    user = User.create!(name:'Joao', email:'joao@sistemadefrete.com.br', password:'123456', user_access: :admin_user)
     login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
  
@@ -34,7 +34,7 @@ describe 'Usuário edita uma Modalidade de Entrega' do
 
   it 'e não é usuário administrador' do
     
-    user = User.create!(name:'Edna', email:'edna@email.com', password:'123456', user_access: :regular_user)
+    user = User.create!(name:'Edna', email:'edna@sistemadefrete.com.br', password:'123456', user_access: :regular_user)
     login_as(user)
     DeliveryModality.create!(mod_name: 'Expressa', mod_price: '15')
  

@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, presence: true
+  validates :email, format: { with: /\w+@sistemadefrete.com.br/}
+
   enum user_access: {admin_user: 9, regular_user: 5}
 end
