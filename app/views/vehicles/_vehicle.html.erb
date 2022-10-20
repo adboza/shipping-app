@@ -1,0 +1,10 @@
+<section id="vehicle" class="container-fluid">
+  <dl>
+    <dd><strong><%= Vehicle.human_attribute_name(:licence_plate) %>:</strong> <%= link_to vehicle.licence_plate, vehicle %> </dd>
+    <dd><strong><%= Vehicle.human_attribute_name(:model) %>:</strong> <%= vehicle.model %> </dd>
+    <dd><strong><%= Vehicle.human_attribute_name(:year) %>:</strong> <%= vehicle.year %> </dd>    
+    <dd><strong><%= Vehicle.human_attribute_name(:load_capacity) %>:</strong> <%= vehicle.load_capacity %> kg</dd>    
+    <dd><strong><%= Vehicle.human_attribute_name(:status) %>:</strong> <%= t(vehicle.status) %> </dd>
+  </dl>
+  <hr>
+</section>

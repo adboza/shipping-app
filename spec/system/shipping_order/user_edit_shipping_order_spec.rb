@@ -72,6 +72,7 @@ describe 'Usuário edita detalhes da ordem de entrega' do
     click_on 'Detalhes - AB1234567890123'
     click_on 'Editar ordem de entrega'
     fill_in 'Data de recebimento', with: Date.today
+    fill_in 'Justificativa', with: 'em dia'
     click_on 'Salvar'
     
     expect(page).to have_content 'Ordem de entrega atualizada com sucesso'

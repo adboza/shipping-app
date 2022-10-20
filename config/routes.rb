@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :vehicle_type_selections, only: [:new, :create]
   
-  resources :vehicles, only: [:index, :new, :create, :show, :edit, :update]
+  resources :vehicles, only: [:index, :new, :create, :show, :edit, :update] do
+    get 'search', on: :collection
+  end
 
   resources :service_orders, only: [:index, :new, :show, :create, :edit, :update] do
     get 'pending', on: :collection

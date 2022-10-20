@@ -36,6 +36,11 @@ class VehiclesController < ApplicationController
     redirect_to @vehicle, notice: 'Veículo atualizado com sucesso!'
   end
 
+  def search
+    @licence_plate = params["query"]    
+    @vehicles = Vehicle.where("licence_plate LIKE ?", "%#{@licence_plate}%")    
+  end
+
   private
 
   def vehicle_params

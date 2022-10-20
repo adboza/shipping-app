@@ -24,6 +24,7 @@ pt-BR:
         bicycle: 'Bicicleta'
         utility_vehicle: 'Veículo utilitário'
         car: 'Carro'
+        found: 'encontrado'
       vehicle_type:
         vehicle_type: 'Tipo de veículo'
         motorcycle: 'Moto'

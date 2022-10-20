@@ -1,0 +1,6 @@
+<h1>Resultados da Busca por: <%= @licence_plate %></h1>
+
+<hr>
+<% @vehicles.each do |vehicle|%>
+  <%= render vehicle %>
+<% end %>
