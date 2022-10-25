@@ -108,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_204430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "vehicle_type", default: 0
+    t.integer "delivery_modality_id"
+    t.index ["delivery_modality_id"], name: "index_vehicle_types_on_delivery_modality_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -133,5 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_204430) do
   add_foreign_key "shipping_orders", "service_orders"
   add_foreign_key "vehicle_type_selections", "delivery_modalities"
   add_foreign_key "vehicle_type_selections", "vehicle_types"
+  add_foreign_key "vehicle_types", "delivery_modalities"
   add_foreign_key "vehicles", "vehicle_types"
 end
