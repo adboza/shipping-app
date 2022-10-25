@@ -1,6 +1,6 @@
-class CreateShippingOrders < ActiveRecord::Migration[7.0]
+class CreateSippingOrders < ActiveRecord::Migration[7.0]
   def change
-    create_table :shipping_orders do |t|
+    create_table :sipping_orders do |t|
       t.references :delivery_modality, null: false, foreign_key: true
       t.references :service_order, null: false, foreign_key: true
       t.references :vehicle, null: false, foreign_key: true
